@@ -133,7 +133,7 @@ public class CarPlayNavigationViewController: UIViewController, NavigationMapVie
     override public func viewDidLoad() {
         super.viewDidLoad()
         
-        let mapView = NavigationMapView(frame: view.bounds)
+        let mapView = NavigationMapView(frame: view.bounds, styleURL: nil)
         mapView.translatesAutoresizingMaskIntoConstraints = false
         mapView.compassView.isHidden = true
         mapView.logoView.isHidden = true
