@@ -7,6 +7,10 @@ import UIKit
 let SecondsBeforeCollectionAfterFeedbackEvent: TimeInterval = 20
 let EventVersion = 8
 
+extension MMEEventsManager {
+    public static var unrated: Int { return -1 }
+}
+
 extension UIDevice {
     @nonobjc var machine: String {
         get {
