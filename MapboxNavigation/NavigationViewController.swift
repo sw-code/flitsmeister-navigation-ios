@@ -489,7 +489,6 @@ open class NavigationViewController: UIViewController {
         notification.fireDate = Date()
         
         clearStaleNotifications()
-        
         UIApplication.shared.cancelAllLocalNotifications()
         UIApplication.shared.scheduleLocalNotification(notification)
     }

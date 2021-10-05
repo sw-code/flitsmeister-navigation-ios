@@ -703,8 +703,10 @@ extension RouteMapViewController: NavigationViewDelegate {
 
         // Add Mapbox Streets if the map does not already have it
         if streetsSources.isEmpty {
-            let source = MGLVectorTileSource(identifier: "mapboxStreetsv7", configurationURL: URL(string: "mapbox://mapbox.mapbox-streets-v7")!)
-            style.addSource(source)
+            let source = MGLVectorTileSource(identifier: "mapboxStreetsv7", configurationURL: URL(string: Bundle.main.object(forInfoDictionaryKey: "MGLMapboxStyleUrl") as? String ?? "mapbox://mapbox.mapbox-streets-v7")!)
+            if style.sources.contains(source) {
+                style.addSource(source)
+            }
             streetsSources.append(source)
         }
 

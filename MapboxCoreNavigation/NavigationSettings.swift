@@ -66,9 +66,11 @@ public class NavigationSettings: NSObject {
         super.init()
         for property in properties {
             guard let key = property.label else { continue }
-            let val = UserDefaults.standard.object(forKey: key.prefixed) ?? value(forKey: key)
-            setValue(val, forKey: key)
-            addObserver(self, forKeyPath: key, options: .new, context: nil)
+            if (key != "$__lazy_storage_$_properties") {
+               let val = UserDefaults.standard.object(forKey: key.prefixed) ?? value(forKey: key)
+               setValue(val, forKey: key)
+               addObserver(self, forKeyPath: key, options: .new, context: nil)
+           }
         }
     }
     
