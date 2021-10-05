@@ -9,7 +9,7 @@ extension UIColor {
     class var defaultRouteLineCasing: UIColor { ConfigManager.shared.config.routeLineCasingColor }
     class var defaultRouteLineCasingAlternative: UIColor { ConfigManager.shared.config.routeLineCasingAlternativeColor }
     
-    class var defaultRouteLayer: UIColor { get { return #colorLiteral(red: 0.337254902, green: 0.6588235294, blue: 0.9843137255, alpha: 1) } }
+    class var defaultRouteLayer: UIColor { get { return UIColor(named: "accentColor", in: Bundle.main, compatibleWith: nil) ?? #colorLiteral(red: 0.337254902, green: 0.6588235294, blue: 0.9843137255, alpha: 1) } }
     class var defaultManeuverArrowStroke: UIColor { ConfigManager.shared.config.routeArrowCasingColor }
     class var defaultManeuverArrow: UIColor { ConfigManager.shared.config.routeArrowColor }
     
@@ -29,8 +29,8 @@ extension UIColor {
 
 extension UIColor {
     // General styling
-    fileprivate class var defaultTint: UIColor { get { return #colorLiteral(red: 0.1843137255, green: 0.4784313725, blue: 0.7764705882, alpha: 1) } }
-    fileprivate class var defaultTintStroke: UIColor { get { return #colorLiteral(red: 0.1843137255, green: 0.4784313725, blue: 0.7764705882, alpha: 1) } }
+    fileprivate class var defaultTint: UIColor { get { return UIColor(named: "accentColor", in: Bundle.main, compatibleWith: nil) ?? #colorLiteral(red: 0.1843137255, green: 0.4784313725, blue: 0.7764705882, alpha: 1) } }
+    fileprivate class var defaultTintStroke: UIColor { get { return UIColor(named: "accentColor", in: Bundle.main, compatibleWith: nil) ?? #colorLiteral(red: 0.1843137255, green: 0.4784313725, blue: 0.7764705882, alpha: 1) } }
     fileprivate class var defaultPrimaryText: UIColor { get { return #colorLiteral(red: 45.0/255.0, green: 45.0/255.0, blue: 45.0/255.0, alpha: 1) } }
     fileprivate class var defaultSecondaryText: UIColor { get { return #colorLiteral(red: 0.4509803922, green: 0.4509803922, blue: 0.4509803922, alpha: 1) } }
 }
@@ -49,7 +49,7 @@ open class DayStyle: Style {
     
     public required init() {
         super.init()
-        mapStyleURL = MGLStyle.navigationGuidanceDayStyleURL
+        mapStyleURL = URL(string: Bundle.main.object(forInfoDictionaryKey: "MGLMapboxStyleUrl") as? String ?? MGLStyle.navigationGuidanceDayStyleURL.absoluteString)!
         styleType = .day
         statusBarStyle = .default
     }
@@ -155,7 +155,7 @@ open class DayStyle: Style {
         TimeRemainingLabel.appearance().trafficModerateColor = #colorLiteral(red:0.95, green:0.65, blue:0.31, alpha:1.0)
         TimeRemainingLabel.appearance().trafficSevereColor = #colorLiteral(red: 0.7705719471, green: 0.1753477752, blue: 0.1177056804, alpha: 1)
         TimeRemainingLabel.appearance().trafficUnknownColor = .defaultPrimaryText
-        UserPuckCourseView.appearance().puckColor = #colorLiteral(red: 0.149, green: 0.239, blue: 0.341, alpha: 1)
+        UserPuckCourseView.appearance().puckColor = UIColor(named: "accentColor", in: Bundle.main, compatibleWith: nil) ?? #colorLiteral(red: 0.149, green: 0.239, blue: 0.341, alpha: 1)
         WayNameLabel.appearance().normalFont = UIFont.systemFont(ofSize:20, weight: .medium).adjustedFont
         WayNameLabel.appearance().normalTextColor = #colorLiteral(red: 0.968627451, green: 0.968627451, blue: 0.968627451, alpha: 1)
         WayNameView.appearance().backgroundColor = UIColor.defaultRouteLayer.withAlphaComponent(0.85)
@@ -171,8 +171,8 @@ open class NightStyle: DayStyle {
     
     public required init() {
         super.init()
-        mapStyleURL = MGLStyle.navigationGuidanceNightStyleURL
-        previewMapStyleURL = MGLStyle.navigationPreviewNightStyleURL
+        mapStyleURL = URL(string: Bundle.main.object(forInfoDictionaryKey: "MGLMapboxStyleUrl") as? String ?? MGLStyle.navigationGuidanceNightStyleURL.absoluteString)!
+        previewMapStyleURL = URL(string: Bundle.main.object(forInfoDictionaryKey: "MGLMapboxStyleUrl") as? String ?? MGLStyle.navigationPreviewNightStyleURL.absoluteString)!
         styleType = .night
         statusBarStyle = .lightContent
     }

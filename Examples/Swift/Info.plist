@@ -22,13 +22,19 @@
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>MGLMapboxAPIBaseURL</key>
+	<string>https://graphhopper.com/api/1/navigate/</string>
 	<key>MGLMapboxAccessToken</key>
-	<string>PASTE MAPBOX ACCESS TOKEN HERE</string>
+	<string>pk.0a3f2097-09ca-4a99-8a82-1d066b87ff2e</string>
+	<key>MGLMapboxStyleUrl</key>
+	<string>https://api.maptiler.com/maps/streets/style.json?key=i6F3fJITHR6eHw1SJq9e</string>
+	<key>MGLMapboxMetricsEnabledSettingShownInApp</key>
+	<string>YES</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Get user location</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Get user location</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Get user location</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Get user location</string>
 	<key>UIBackgroundModes</key>
 	<array>
@@ -58,7 +64,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
-	<key>MGLMapboxMetricsEnabledSettingShownInApp</key>
-	<string>YES</string>
 </dict>
 </plist>

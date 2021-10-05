@@ -16,9 +16,9 @@ class ConfigManager {
 
 public struct MNConfig {
     // Route
-    public var routeLineColor = #colorLiteral(red: 0, green: 0.4980392157, blue: 0.9098039216, alpha: 1)
+    public var routeLineColor = UIColor(named: "accentColor", in: Bundle.main, compatibleWith: nil) ?? #colorLiteral(red: 0, green: 0.4980392157, blue: 0.9098039216, alpha: 1)
     public var routeLineAlpha: Double = 1
-    public var routeLineCasingColor = #colorLiteral(red: 0, green: 0.3450980392, blue: 0.6352941176, alpha: 1)
+    public var routeLineCasingColor = UIColor(named: "accentColor", in: Bundle.main, compatibleWith: nil) ?? #colorLiteral(red: 0, green: 0.3450980392, blue: 0.6352941176, alpha: 1)
     public var routeLineCasingAlpha: Double = 1
     
     // Alternative route
@@ -29,7 +29,7 @@ public struct MNConfig {
     
     // Arrow
     public var routeArrowColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-    public var routeArrowCasingColor = #colorLiteral(red: 0, green: 0.4980392157, blue: 0.9098039216, alpha: 1)
+    public var routeArrowCasingColor = UIColor(named: "accentColor", in: Bundle.main, compatibleWith: nil) ?? #colorLiteral(red: 0, green: 0.4980392157, blue: 0.9098039216, alpha: 1)
     
     public init() {
     }

@@ -169,9 +169,10 @@ open class NavigationView: UIView {
     }
     
     func setupStackViews() {
-    
         setupInformationStackView()
-        floatingStackView.addArrangedSubviews([overviewButton, muteButton, reportButton])
+        overviewButton.imageView?.tintColor = UIColor(named: "accentColor", in: Bundle.main, compatibleWith: nil)
+        muteButton.imageView?.tintColor = UIColor(named: "accentColor", in: Bundle.main, compatibleWith: nil)
+        floatingStackView.addArrangedSubviews([overviewButton, muteButton])
     }
     
     func setupInformationStackView() {

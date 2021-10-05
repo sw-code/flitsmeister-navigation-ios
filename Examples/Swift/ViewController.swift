@@ -3,6 +3,7 @@ import MapboxCoreNavigation
 import MapboxNavigation
 import MapboxDirections
 import UserNotifications
+import MapKit
 
 
 private typealias RouteRequestSuccess = (([Route]) -> Void)
@@ -18,6 +19,8 @@ class ViewController: UIViewController, MGLMapViewDelegate {
     @IBOutlet weak var bottomBar: UIView!
     @IBOutlet weak var clearMap: UIButton!
     @IBOutlet weak var bottomBarBackground: UIView!
+    
+    var navigationViewController: NavigationViewController!
     
     // MARK: Properties
     var mapView: NavigationMapView? {
@@ -66,44 +69,10 @@ class ViewController: UIViewController, MGLMapViewDelegate {
 
     var alertController: UIAlertController!
     
-    // MARK: - Lifecycle Methods
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        alertController = UIAlertController(title: "Start Navigation", message: "Select the navigation type", preferredStyle: .actionSheet)
-        
-        typealias ActionHandler = (UIAlertAction) -> Void
-        
-        let basic: ActionHandler = {_ in self.startBasicNavigation() }
-        let day: ActionHandler = {_ in self.startNavigation(styles: [DayStyle()]) }
-        let night: ActionHandler = {_ in self.startNavigation(styles: [NightStyle()]) }
-        let custom: ActionHandler = {_ in self.startCustomNavigation() }
-        let styled: ActionHandler = {_ in self.startStyledNavigation() }
-        
-        let actionPayloads: [(String, UIAlertActionStyle, ActionHandler?)] = [
-            ("Default UI", .default, basic),
-            ("DayStyle UI", .default, day),
-            ("NightStyle UI", .default, night),
-            ("Custom UI", .default, custom),
-            ("Styled UI", .default, styled),
-            ("Cancel", .cancel, nil)
-        ]
-        
-        actionPayloads
-            .map { payload in UIAlertAction(title: payload.0, style: payload.1, handler: payload.2)}
-            .forEach(alertController.addAction(_:))
-
-        if let popoverController = alertController.popoverPresentationController {
-            popoverController.sourceView = self.startButton
-        }
-
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        self.mapView = NavigationMapView(frame: view.bounds, styleURL: nil, palette: Palette())
+        self.mapView = NavigationMapView(frame: view.bounds)
 
         // Reset the navigation styling to the defaults if we are returning from a presentation.
         if (presentedViewController != nil) {
@@ -144,21 +113,6 @@ class ViewController: UIViewController, MGLMapViewDelegate {
         requestRoute()
     }
 
-
-    // MARK: - IBActions
-    @IBAction func replay(_ sender: Any) {
-        let bundle = Bundle(for: ViewController.self)
-        let filePath = bundle.path(forResource: "tunnel", ofType: "json")!
-        let routeFilePath = bundle.path(forResource: "tunnel", ofType: "route")!
-        let route = NSKeyedUnarchiver.unarchiveObject(withFile: routeFilePath) as! Route
-
-        let locationManager = ReplayLocationManager(locations: Array<CLLocation>.locations(from: filePath))
-
-        let navigationViewController = NavigationViewController(for: route, locationManager: locationManager)
-
-        present(navigationViewController, animated: true, completion: nil)
-    }
-
     @IBAction func simulateButtonPressed(_ sender: Any) {
         simulationButton.isSelected = !simulationButton.isSelected
     }
@@ -172,7 +126,7 @@ class ViewController: UIViewController, MGLMapViewDelegate {
     }
 
     @IBAction func startButtonPressed(_ sender: Any) {
-        present(alertController, animated: true, completion: nil)
+        startStyledNavigation()
     }
 
     // MARK: - Public Methods
@@ -184,9 +138,9 @@ class ViewController: UIViewController, MGLMapViewDelegate {
         let userWaypoint = Waypoint(location: mapView.userLocation!.location!, heading: mapView.userLocation?.heading, name: "User location")
         waypoints.insert(userWaypoint, at: 0)
 
-        let options = NavigationRouteOptions(waypoints: waypoints)
-
-        requestRoute(with: options, success: defaultSuccess, failure: defaultFailure)
+        let routeOptions = NavigationRouteOptions(waypoints: waypoints, profileIdentifier: MBDirectionsProfileIdentifier.walking)
+        
+        requestRoute(with: routeOptions, success: defaultSuccess, failure: defaultFailure)
     }
 
     fileprivate func requestRoute(with options: RouteOptions, success: @escaping RouteRequestSuccess, failure: RouteRequestFailure?) {
@@ -200,55 +154,45 @@ class ViewController: UIViewController, MGLMapViewDelegate {
         _ = Directions.shared.calculate(options, completionHandler: handler)
     }
 
-    // MARK: Basic Navigation
-
-    func startBasicNavigation() {
-        guard let route = routes?.first else { return }
-
-        let navigationViewController = NavigationViewController(for: route, locationManager: navigationLocationManager())
-        navigationViewController.delegate = self
-        
-        presentAndRemoveMapview(navigationViewController)
-    }
-    
-    func startNavigation(styles: [Style]) {
-        guard let route = routes?.first else { return }
-        
-        let navigationViewController = NavigationViewController(for: route, styles: styles, locationManager: navigationLocationManager())
-        navigationViewController.delegate = self
-        
-        presentAndRemoveMapview(navigationViewController)
-    }
-    
-    // MARK: Custom Navigation UI
-    func startCustomNavigation() {
-        guard let route = routes?.first else { return }
-
-        guard let customViewController = storyboard?.instantiateViewController(withIdentifier: "custom") as? CustomViewController else { return }
-
-        customViewController.userRoute = route
-
-        let destination = MGLPointAnnotation()
-        destination.coordinate = route.coordinates!.last!
-        customViewController.destination = destination
-        customViewController.simulateLocation = simulationButton.isSelected
-
-        present(customViewController, animated: true, completion: nil)
-    }
-
-    // MARK: Styling the default UI
-
     func startStyledNavigation() {
         guard let route = routes?.first else { return }
 
-        let styles = [CustomDayStyle(), CustomNightStyle()]
-
-        let navigationViewController = NavigationViewController(for: route, styles: styles, locationManager: navigationLocationManager())
+        navigationViewController = NavigationViewController(for: route, locationManager: navigationLocationManager())
         navigationViewController.delegate = self
-
         presentAndRemoveMapview(navigationViewController)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(progressDidChange(_ :)), name: .routeControllerProgressDidChange, object: nil)
     }
-
+    
+    @objc func progressDidChange(_ notification: NSNotification) {
+        let routeProgress = notification.userInfo![RouteControllerNotificationUserInfoKey.routeProgressKey] as! RouteProgress
+        let location = notification.userInfo![RouteControllerNotificationUserInfoKey.locationKey] as! CLLocation
+    
+        addManeuverArrow(routeProgress)
+        updateUserPuck(location)
+        readjustMapCenter()
+    }
+    
+    private func addManeuverArrow(_ routeProgress: RouteProgress) {
+        if routeProgress.currentLegProgress.followOnStep != nil {
+            navigationViewController.mapView?.addArrow(route: routeProgress.route, legIndex: routeProgress.legIndex, stepIndex: routeProgress.currentLegProgress.stepIndex + 1)
+        } else {
+            navigationViewController.mapView?.removeArrow()
+        }
+    }
+    
+    private func updateUserPuck(_ location: CLLocation) {
+        navigationViewController.mapView?.updateCourseTracking(location: location, animated: true)
+    }
+    
+    private func readjustMapCenter() {
+        if navigationViewController.mapView != nil {
+            let halfMapHeight = navigationViewController.mapView!.bounds.height / 2
+            let topPadding = halfMapHeight - 30
+            navigationViewController.mapView?.setContentInset(UIEdgeInsets(top: topPadding, left: 0, bottom: 0, right: 0), animated: true, completionHandler: nil)
+        }
+    }
+    
     func navigationLocationManager() -> NavigationLocationManager {
         guard let route = routes?.first else { return NavigationLocationManager() }
         return simulationButton.isSelected ? SimulatedLocationManager(route: route) : NavigationLocationManager()

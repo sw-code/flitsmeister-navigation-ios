@@ -114,7 +114,8 @@ open class RouteVoiceController: NSObject, AVSpeechSynthesizerDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(didPassSpokenInstructionPoint(notification:)), name: .routeControllerDidPassSpokenInstructionPoint, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(pauseSpeechAndPlayReroutingDing(notification:)), name: .routeControllerWillReroute, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didReroute(notification:)), name: .routeControllerDidReroute, object: nil)
-        
+        var bla = NavigationSettings.shared
+        print(bla.debugDescription)
         muteToken = NavigationSettings.shared.observe(\.voiceMuted) { [weak self] (settings, change) in
             if settings.voiceMuted {
                 self?.speechSynth.stopSpeaking(at: .immediate)

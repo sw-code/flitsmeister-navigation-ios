@@ -25,18 +25,13 @@ class CustomViewController: UIViewController, MGLMapViewDelegate {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var instructionsBannerView: InstructionsBannerView!
     
-    lazy var feedbackViewController: FeedbackViewController = {
-        return FeedbackViewController(eventsManager: routeController.eventsManager)
-    }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let locationManager = simulateLocation ? SimulatedLocationManager(route: userRoute!) : NavigationLocationManager()
-        routeController = RouteController(along: userRoute!, locationManager: locationManager, eventsManager: EventsManager())
+        routeController = RouteController(along: userRoute!, directions: directions, locationManager: locationManager)
         
         mapView.delegate = self
-        mapView.compassView.isHidden = true
         
         instructionsBannerView.delegate = self
 
@@ -94,6 +89,7 @@ class CustomViewController: UIViewController, MGLMapViewDelegate {
         
         // Update the user puck
         mapView.updateCourseTracking(location: location, animated: true)
+        mapView.recenterMap()
     }
     
     @objc func updateInstructionsBanner(notification: NSNotification) {
