@@ -1,7 +1,4 @@
 # Updating this to 5.7.0, 5.8.0 or 5.9.0 breaks FM app
 # So use downgraded version for now
-github "mapbox/MapboxGeocoder.swift" ~> 0.10
-github "mapbox/mapbox-events-ios" "v0.10.2"
-github "mapbox/turf-swift" ~> 0.2
 github "ceeK/Solar" ~> 2.1.0
-github "mapbox/mapbox-voice-swift" ~> 0.0.1
+github "raphaelmor/Polyline" ~> 4.2
