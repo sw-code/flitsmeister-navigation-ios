@@ -34,7 +34,7 @@ Alternatively, to install Mapbox Navigation using [Carthage](https://github.com/
    github "flitsmeister/flitsmeister-navigation-ios" ~> 1.0.3
    ```
 
-1. Run `carthage update --platform iOS` to build just the iOS dependencies.
+1. Run `carthage update --platform iOS --use-xcframeworks` to build just the iOS dependencies.
 
 1. Follow the rest of [Carthage’s iOS integration instructions](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos). Your application target’s Embedded Frameworks should include MapboxNavigation.framework and MapboxCoreNavigation.framework.
 

@@ -1,4 +1,2 @@
-# Updating this to 5.7.0, 5.8.0 or 5.9.0 breaks FM app
-# So use downgraded version for now
 github "ceeK/Solar" ~> 2.1.0
 github "raphaelmor/Polyline" ~> 4.2

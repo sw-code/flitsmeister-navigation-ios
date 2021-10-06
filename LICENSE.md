@@ -2,6 +2,8 @@ Partial of this code is licensed under MIT and partial is ISC.
 
 The MIT License (MIT)
 
+Copyright (c) 2021 SWCode
+
 Copyright (c) 2020 Flitsmeister
 
 Copyright (c) 2016 Matthijs Hollemans and contributors
