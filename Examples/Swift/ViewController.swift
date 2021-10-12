@@ -1,10 +1,10 @@
 import UIKit
 import MapboxCoreNavigation
 import MapboxNavigation
+import MapboxNavigationUI
 import MapboxDirections
 import UserNotifications
 import MapKit
-
 
 private typealias RouteRequestSuccess = (([Route]) -> Void)
 private typealias RouteRequestFailure = ((NSError) -> Void)
@@ -20,7 +20,8 @@ class ViewController: UIViewController, MGLMapViewDelegate {
     @IBOutlet weak var clearMap: UIButton!
     @IBOutlet weak var bottomBarBackground: UIView!
     
-    var navigationViewController: NavigationViewController!
+    var navigationViewController: SpotARNavigationViewController!
+    var navigationView: UIViewController?
     
     // MARK: Properties
     var mapView: NavigationMapView? {
@@ -71,13 +72,7 @@ class ViewController: UIViewController, MGLMapViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        self.mapView = NavigationMapView(frame: view.bounds)
-
-        // Reset the navigation styling to the defaults if we are returning from a presentation.
-        if (presentedViewController != nil) {
-            DayStyle().apply()
-        }
+        startMapView()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -93,7 +88,6 @@ class ViewController: UIViewController, MGLMapViewDelegate {
     }
 
     // MARK: Gesture Recognizer Handlers
-
     @objc func didLongPress(tap: UILongPressGestureRecognizer) {
         guard let mapView = mapView, tap.state == .began else { return }
 
@@ -144,7 +138,6 @@ class ViewController: UIViewController, MGLMapViewDelegate {
     }
 
     fileprivate func requestRoute(with options: RouteOptions, success: @escaping RouteRequestSuccess, failure: RouteRequestFailure?) {
-
         let handler: Directions.RouteCompletionHandler = {(waypoints, potentialRoutes, potentialError) in
             if let error = potentialError, let fail = failure { return fail(error) }
             guard let routes = potentialRoutes else { return }
@@ -155,53 +148,27 @@ class ViewController: UIViewController, MGLMapViewDelegate {
     }
 
     func startStyledNavigation() {
-        guard let route = routes?.first else { return }
-
-        navigationViewController = NavigationViewController(for: route, locationManager: navigationLocationManager())
+        navigationViewController = SpotARNavigationViewController()
         navigationViewController.delegate = self
-        presentAndRemoveMapview(navigationViewController)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(progressDidChange(_ :)), name: .routeControllerProgressDidChange, object: nil)
-    }
-    
-    @objc func progressDidChange(_ notification: NSNotification) {
-        let routeProgress = notification.userInfo![RouteControllerNotificationUserInfoKey.routeProgressKey] as! RouteProgress
-        let location = notification.userInfo![RouteControllerNotificationUserInfoKey.locationKey] as! CLLocation
-    
-        addManeuverArrow(routeProgress)
-        updateUserPuck(location)
-        readjustMapCenter()
-    }
-    
-    private func addManeuverArrow(_ routeProgress: RouteProgress) {
-        if routeProgress.currentLegProgress.followOnStep != nil {
-            navigationViewController.mapView?.addArrow(route: routeProgress.route, legIndex: routeProgress.legIndex, stepIndex: routeProgress.currentLegProgress.stepIndex + 1)
-        } else {
-            navigationViewController.mapView?.removeArrow()
-        }
-    }
-    
-    private func updateUserPuck(_ location: CLLocation) {
-        navigationViewController.mapView?.updateCourseTracking(location: location, animated: true)
-    }
-    
-    private func readjustMapCenter() {
-        if navigationViewController.mapView != nil {
-            let halfMapHeight = navigationViewController.mapView!.bounds.height / 2
-            let topPadding = halfMapHeight - 30
-            navigationViewController.mapView?.setContentInset(UIEdgeInsets(top: topPadding, left: 0, bottom: 0, right: 0), animated: true, completionHandler: nil)
-        }
-    }
-    
-    func navigationLocationManager() -> NavigationLocationManager {
-        guard let route = routes?.first else { return NavigationLocationManager() }
-        return simulationButton.isSelected ? SimulatedLocationManager(route: route) : NavigationLocationManager()
+        navigationViewController.startNavigation(routes: routes!, simulated: simulationButton.isSelected)
     }
 
-    func presentAndRemoveMapview(_ navigationViewController: NavigationViewController) {
-        present(navigationViewController, animated: true) {
+    func presentAndRemoveMapview(_ viewController: UIViewController) {
+        self.navigationView = viewController
+        present(viewController, animated: true) {
             self.mapView?.removeFromSuperview()
             self.mapView = nil
+        }
+    }
+    
+    func startMapView() {
+        self.routes = nil
+        self.waypoints = []
+        self.mapView = NavigationMapView(frame: view.bounds)
+
+        // Reset the navigation styling to the defaults if we are returning from a presentation.
+        if (presentedViewController != nil) {
+            DayStyle().apply()
         }
     }
 
@@ -261,87 +228,18 @@ extension ViewController: NavigationMapViewDelegate {
     }
 }
 
-// MARK: VoiceControllerDelegate methods
-// To use these delegate methods, set the `VoiceControllerDelegate` on your `VoiceController`.
-extension ViewController: VoiceControllerDelegate {
-    // Called when there is an error with speaking a voice instruction.
-    func voiceController(_ voiceController: RouteVoiceController, spokenInstructionsDidFailWith error: Error) {
-        print(error.localizedDescription)
-    }
-    // Called when an instruction is interrupted by a new voice instruction.
-    func voiceController(_ voiceController: RouteVoiceController, didInterrupt interruptedInstruction: SpokenInstruction, with interruptingInstruction: SpokenInstruction) {
-        print(interruptedInstruction.text, interruptingInstruction.text)
+extension ViewController: SpotARNavigationUIDelegate {
+    func wantsToPresent(viewController: UIViewController) {
+        presentAndRemoveMapview(viewController)
     }
     
-    func voiceController(_ voiceController: RouteVoiceController, willSpeak instruction: SpokenInstruction, routeProgress: RouteProgress) -> SpokenInstruction? {
-        return SpokenInstruction(distanceAlongStep: instruction.distanceAlongStep, text: "New Instruction!", ssmlText: "<speak>New Instruction!</speak>")
+    func didArrive() {
+        self.navigationView?.dismiss(animated: true, completion: nil)
     }
     
-    // By default, the routeController will attempt to filter out bad locations.
-    // If however you would like to filter these locations in,
-    // you can conditionally return a Bool here according to your own heuristics.
-    // See CLLocation.swift `isQualified` for what makes a location update unqualified.
-    func navigationViewController(_ navigationViewController: NavigationViewController, shouldDiscard location: CLLocation) -> Bool {
-        return true
-    }
-}
-
-// MARK: WaypointConfirmationViewControllerDelegate
-extension ViewController: WaypointConfirmationViewControllerDelegate {
-    func confirmationControllerDidConfirm(_ confirmationController: WaypointConfirmationViewController) {
-        confirmationController.dismiss(animated: true, completion: {
-            guard let navigationViewController = self.presentedViewController as? NavigationViewController else { return }
-
-            guard navigationViewController.routeController.routeProgress.route.legs.count > navigationViewController.routeController.routeProgress.legIndex + 1 else { return }
-            navigationViewController.routeController.routeProgress.legIndex += 1
-            navigationViewController.routeController.resume()
-        })
-    }
-}
-
-// MARK: NavigationViewControllerDelegate
-extension ViewController: NavigationViewControllerDelegate {
-    // By default, when the user arrives at a waypoint, the next leg starts immediately.
-    // If you implement this method, return true to preserve this behavior.
-    // Return false to remain on the current leg, for example to allow the user to provide input.
-    // If you return false, you must manually advance to the next leg. See the example above in `confirmationControllerDidConfirm(_:)`.
-    func navigationViewController(_ navigationViewController: NavigationViewController, didArriveAt waypoint: Waypoint) -> Bool {
-        // When the user arrives, present a view controller that prompts the user to continue to their next destination
-        // This type of screen could show information about a destination, pickup/dropoff confirmation, instructions upon arrival, etc.
-        
-        //If we're not in a "Multiple Stops" demo, show the normal EORVC
-        if navigationViewController.routeController.routeProgress.isFinalLeg {
-            return true
+    func didCancel() {
+        self.navigationView?.dismiss(animated: true) {
+            self.startMapView()
         }
-        
-        guard let confirmationController = self.storyboard?.instantiateViewController(withIdentifier: "waypointConfirmation") as? WaypointConfirmationViewController else {
-            return true
-        }
-
-        confirmationController.delegate = self
-
-        navigationViewController.present(confirmationController, animated: true, completion: nil)
-        return false
-    }
-    
-    // Called when the user hits the exit button.
-    // If implemented, you are responsible for also dismissing the UI.
-    func navigationViewControllerDidDismiss(_ navigationViewController: NavigationViewController, byCanceling canceled: Bool) {
-        navigationViewController.dismiss(animated: true, completion: nil)
-    }
-}
-
-
-// Mark: VisualInstructionDelegate
-extension ViewController: VisualInstructionDelegate {
-    func label(_ label: InstructionLabel, willPresent instruction: VisualInstruction, as presented: NSAttributedString) -> NSAttributedString? {
-        
-        // Uncomment to mutate the instruction shown in the top instruction banner
-        // let range = NSRange(location: 0, length: presented.length)
-        // let mutable = NSMutableAttributedString(attributedString: presented)
-        // mutable.mutableString.applyTransform(.latinToKatakana, reverse: false, range: range, updatedRange: nil)
-        // return mutable
-        
-        return presented
     }
 }
