@@ -83,7 +83,7 @@ class MapboxCoreNavigationTests: XCTestCase {
     
     func testShouldReroute() {
         route.accessToken = "foo"
-        let firstLocation = CLLocation(coordinate: CLLocationCoordinate2D(latitude: 38, longitude: -123),
+        let firstLocation = CLLocation(coordinate: CLLocationCoordinate2D(latitude: 37.795042, longitude: -122.413165),
                                        altitude: 0, horizontalAccuracy: 0, verticalAccuracy: 0, course: 0, speed: 0,
                                        timestamp: Date())
         
