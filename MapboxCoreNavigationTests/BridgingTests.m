@@ -20,16 +20,14 @@
     MBWaypoint *wp1 = [[MBWaypoint alloc] initWithCoordinate:CLLocationCoordinate2DMake(37.795042, -122.413165) coordinateAccuracy:0 name:@"wp1"];
     MBWaypoint *wp2 = [[MBWaypoint alloc] initWithCoordinate:CLLocationCoordinate2DMake(37.7727, -122.433378) coordinateAccuracy:0 name:@"wp2"];
     NSArray<MBWaypoint *> *waypoints = @[wp1, wp2];
-    MBNavigationRouteOptions *options = [[MBNavigationRouteOptions alloc] initWithWaypoints:waypoints profileIdentifier:MBDirectionsProfileIdentifierAutomobileAvoidingTraffic];
+    MBNavigationRouteOptions *options = [[MBNavigationRouteOptions alloc] initWithWaypoints:waypoints];
     MBRoute *route = [[MBRoute alloc] initWithJSON:routeDict waypoints:waypoints routeOptions:options];
     route.accessToken = @"garbage";
     XCTAssertNotNil(route);
-    MBEventsManager *eventsManager = [[MBEventsManager alloc] initWithAccessToken:route.accessToken];
-    eventsManager.manager = [[MBEventsManagerSpy alloc] init];
     
     MBDirectionsSpy *directions = [[MBDirectionsSpy alloc] initWithAccessToken:@"garbage" host:nil];
     MBNavigationLocationManager *locationManager = [[MBNavigationLocationManager alloc] init];
-    _routeController = [[MBRouteController alloc] initWithRoute:route directions:directions locationManager:locationManager eventsManager:eventsManager];
+    _routeController = [[MBRouteController alloc] initWithRoute:route directions:directions locationManager:locationManager];
     XCTAssertNotNil(_routeController);
     
     XCTestExpectation *expectation = [self expectationForNotification:MBRouteControllerDidRerouteNotification object:nil handler:^BOOL(NSNotification * _Nonnull notification) {

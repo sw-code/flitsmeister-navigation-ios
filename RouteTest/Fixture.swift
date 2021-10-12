@@ -1,6 +1,7 @@
 import Foundation
 import MapboxDirections
 import MapboxCoreNavigation
+import CoreLocation
 
 class Fixture {
     internal class func JSONFromFileNamed(name: String) -> [String: Any] {

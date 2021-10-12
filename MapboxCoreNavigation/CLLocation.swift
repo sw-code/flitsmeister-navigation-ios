@@ -5,8 +5,11 @@ import Turf
 extension CLLocation {
     
     var isQualified: Bool {
-        return
-            0...100 ~= horizontalAccuracy
+        return 0...100 ~= horizontalAccuracy
+    }
+    
+    var isQualifiedForStartingRoute: Bool {
+        return 0...20 ~= horizontalAccuracy
     }
     
     /// Returns a dictionary representation of the location.
@@ -96,7 +99,7 @@ extension CLLocation {
         // If the upcoming maneuver a sharp turn, only look at the current step for snapping.
         // Otherwise, we may get false positives from nearby step coordinates
         if let upcomingStep = legProgress.upComingStep,
-            let initialHeading = upcomingStep.initialHeading,
+           let initialHeading = upcomingStep.initialHeading,
             let finalHeading = upcomingStep.finalHeading {
             
             // The max here is 180. The closer it is to 180, the sharper the turn.
@@ -116,7 +119,6 @@ extension CLLocation {
         
         return nearbyCoordinates
     }
-    
     
     /**
      Given a location and a series of coordinates, compute what the course should be for a the location.
@@ -173,5 +175,9 @@ extension CLLocation {
             return false
         }
         return true
+    }
+    
+    func shifted(to newTimestamp: Date) -> CLLocation {
+        return CLLocation(coordinate: coordinate, altitude: altitude, horizontalAccuracy: horizontalAccuracy, verticalAccuracy: verticalAccuracy, course: course, speed: speed, timestamp: newTimestamp)
     }
 }

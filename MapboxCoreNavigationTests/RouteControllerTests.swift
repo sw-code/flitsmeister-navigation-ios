@@ -13,16 +13,13 @@ class RouteControllerTests: XCTestCase {
         static let accessToken = "nonsense"
     }
 
-    let eventsManagerSpy = MMEEventsManagerSpy()
     let directionsClientSpy = DirectionsSpy(accessToken: "garbage", host: nil)
     let delegate = RouteControllerDelegateSpy()
 
     typealias RouteLocations = (firstLocation: CLLocation, penultimateLocation: CLLocation, lastLocation: CLLocation)
 
     lazy var dependencies: (routeController: RouteController, routeLocations: RouteLocations) = {
-        let eventsManager = EventsManager(accessToken: initialRoute.accessToken)
-        eventsManager.manager = eventsManagerSpy
-        let routeController = RouteController(along: initialRoute, directions: directionsClientSpy, locationManager: NavigationLocationManager(), eventsManager: eventsManager)
+        let routeController = RouteController(along: initialRoute, directions: directionsClientSpy, locationManager: NavigationLocationManager())
         routeController.delegate = delegate
 
         let legProgress: RouteLegProgress = routeController.routeProgress.currentLegProgress
@@ -61,7 +58,6 @@ class RouteControllerTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        eventsManagerSpy.reset()
         directionsClientSpy.reset()
         delegate.reset()
     }
@@ -167,7 +163,7 @@ class RouteControllerTests: XCTestCase {
         let route = Route(json: jsonRoute, waypoints: [waypoint1, waypoint2], options: NavigationRouteOptions(waypoints: [waypoint1, waypoint2]))
 
         route.accessToken = "foo"
-        let navigation = RouteController(along: route, directions: directions, eventsManager: TestNavigationEventsManager())
+        let navigation = RouteController(along: route, directions: directions)
         let firstCoord = navigation.routeProgress.currentLegProgress.nearbyCoordinates.first!
         let firstLocation = CLLocation(latitude: firstCoord.latitude, longitude: firstCoord.longitude)
         let coordNearStart = Polyline(navigation.routeProgress.currentLegProgress.nearbyCoordinates).coordinateFromStart(distance: 10)!
@@ -204,21 +200,9 @@ class RouteControllerTests: XCTestCase {
     }
 
     // MARK: - Events & Delegation
-
-    func testTurnstileEventSentUponInitialization() {
-        // MARK: it sends a turnstile event upon initialization
-        let eventsManager = EventsManager(accessToken: initialRoute.accessToken)
-        eventsManager.manager = eventsManagerSpy
-        let _ = RouteController(along: initialRoute, directions: directionsClientSpy, locationManager: NavigationLocationManager(), eventsManager: eventsManager)
-
-        XCTAssertTrue(eventsManagerSpy.hasFlushedEvent(with: MMEEventTypeAppUserTurnstile))
-    }
-
     func testReroutingFromALocationSendsEvents() {
         let routeController = dependencies.routeController
         let testLocation = dependencies.routeLocations.firstLocation
-
-        routeController.eventsManager.delaysEventFlushing = false
 
         let willRerouteNotificationExpectation = expectation(forNotification: .routeControllerWillReroute, object: routeController) { (notification) -> Bool in
             let fromLocation = notification.userInfo![RouteControllerNotificationUserInfoKey.locationKey] as? CLLocation
@@ -255,13 +239,6 @@ class RouteControllerTests: XCTestCase {
         // MARK: It tells the delegate & posts a routeProgressDidChange notification
         XCTAssertTrue(delegate.recentMessages.contains("routeController(_:didUpdate:)"))
         wait(for: [routeProgressDidChangeNotificationExpectation], timeout: 0.1)
-
-        // MARK: It enqueues and flushes a NavigationRerouteEvent
-        let expectedEventName = MMEEventTypeNavigationReroute
-        XCTAssertTrue(eventsManagerSpy.hasEnqueuedEvent(with: expectedEventName))
-        XCTAssertTrue(eventsManagerSpy.hasFlushedEvent(with: expectedEventName))
-        XCTAssertEqual(eventsManagerSpy.enqueuedEventCount(with: expectedEventName), 1)
-        XCTAssertEqual(eventsManagerSpy.flushedEventCount(with: expectedEventName), 1)
     }
 
     func testGeneratingAnArrivalEvent() {
@@ -273,8 +250,6 @@ class RouteControllerTests: XCTestCase {
         // MARK: When navigation begins with a location update
         routeController.locationManager(routeController.locationManager, didUpdateLocations: [firstLocation])
 
-        // MARK: It queues and flushes a Depart event
-        XCTAssertTrue(eventsManagerSpy.hasFlushedEvent(with: MMEEventTypeNavigationDepart))
         // TODO: should there be a delegate message here as well?
 
         // MARK: When at a valid location just before the last location (should this really be necessary?)
@@ -289,11 +264,6 @@ class RouteControllerTests: XCTestCase {
 
         // MARK: It tells the delegate that the user did arrive
         XCTAssertTrue(delegate.recentMessages.contains("routeController(_:didArriveAt:)"))
-
-        // MARK: It enqueues and flushes an arrival event
-        let expectedEventName = MMEEventTypeNavigationArrive
-        XCTAssertTrue(eventsManagerSpy.hasEnqueuedEvent(with: expectedEventName))
-        XCTAssertTrue(eventsManagerSpy.hasFlushedEvent(with: expectedEventName))
     }
     
     func testNoReroutesAfterArriving() {
@@ -305,8 +275,6 @@ class RouteControllerTests: XCTestCase {
         // MARK: When navigation begins with a location update
         routeController.locationManager(routeController.locationManager, didUpdateLocations: [firstLocation])
         
-        // MARK: It queues and flushes a Depart event
-        XCTAssertTrue(eventsManagerSpy.hasFlushedEvent(with: MMEEventTypeNavigationDepart))
         // TODO: should there be a delegate message here as well?
         
         // MARK: When at a valid location just before the last location (should this really be necessary?)
@@ -331,11 +299,6 @@ class RouteControllerTests: XCTestCase {
         
         // We should not reroute here because the user has arrived.
         XCTAssertFalse(delegate.recentMessages.contains("routeController(_:didRerouteAlong:)"))
-        
-        // MARK: It enqueues and flushes an arrival event
-        let expectedEventName = MMEEventTypeNavigationArrive
-        XCTAssertTrue(eventsManagerSpy.hasEnqueuedEvent(with: expectedEventName))
-        XCTAssertTrue(eventsManagerSpy.hasFlushedEvent(with: expectedEventName))
     }
 
 
@@ -345,11 +308,8 @@ class RouteControllerTests: XCTestCase {
         
         autoreleasepool {
             let locationManager = NavigationLocationManager()
-            let eventsManager = EventsManager(accessToken: initialRoute.accessToken)
-            eventsManager.manager = eventsManagerSpy
-            let routeController: RouteController? = RouteController(along: initialRoute, directions: directionsClientSpy, locationManager: locationManager, eventsManager: eventsManager)
+            let routeController: RouteController? = RouteController(along: initialRoute, directions: directionsClientSpy, locationManager: locationManager)
             subject = routeController
-            eventsManager.routeController = routeController
         }
 
         XCTAssertNil(subject, "Expected RouteController not to live beyond autorelease pool")
@@ -360,9 +320,7 @@ class RouteControllerTests: XCTestCase {
         weak var subject: CLLocationManagerDelegate? = nil
         autoreleasepool {
             let locationManager = NavigationLocationManager()
-            let eventsManager = EventsManager(accessToken: initialRoute.accessToken)
-            eventsManager.manager = eventsManagerSpy
-            _ = RouteController(along: initialRoute, directions: directionsClientSpy, locationManager: locationManager, eventsManager: eventsManager)
+            _ = RouteController(along: initialRoute, directions: directionsClientSpy, locationManager: locationManager)
             subject = locationManager.delegate
         }
         

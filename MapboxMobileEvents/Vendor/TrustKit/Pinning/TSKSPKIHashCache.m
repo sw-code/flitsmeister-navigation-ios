@@ -241,19 +241,7 @@ static const NSString *kTSKKeychainPublicKeyTag = @"TSKKeychainPublicKeyTag"; //
     // Base SDK is iOS 8 or 9
     return [self getPublicKeyDataFromCertificate_legacy_ios:certificate ];
 #else
-    // Base SDK is iOS 10+ - try to use the unified Security APIs if available
-    NSProcessInfo *processInfo = [NSProcessInfo processInfo];
-    if ([processInfo respondsToSelector:@selector(isOperatingSystemAtLeastVersion:)]
-        && [processInfo isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion){10, 0, 0}])
-    {
-        // iOS 10+
-        return [self getPublicKeyDataFromCertificate_unified:certificate];
-    }
-    else
-    {
-        // iOS 8 or 9
-        return [self getPublicKeyDataFromCertificate_legacy_ios:certificate];
-    }
+    return [self getPublicKeyDataFromCertificate_unified:certificate];
 #endif
     // ****** macOS ******
 #else
