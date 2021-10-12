@@ -20,6 +20,10 @@
 	<string>34</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>RouteTest needs access to your location.</string>
+	<key>NSLocationUsageDescription</key>
+	<string>RouteTest needs access to your location.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>RouteTest needs access to your location.</string>
 	<key>UIBackgroundModes</key>

@@ -83,17 +83,16 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "358D14A51E5E3FDC00ADE590"
+            BuildableName = "Example-Objective-C.app"
+            BlueprintName = "Example-Objective-C"
+            ReferencedContainer = "container:MapboxNavigation.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "352BBC541E5E78EA00703DF1"
-               BuildableName = "Example-Objective-CTests.xctest"
-               BlueprintName = "Example-Objective-CTests"
-               ReferencedContainer = "container:MapboxNavigation.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
@@ -125,17 +124,6 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "358D14A51E5E3FDC00ADE590"
-            BuildableName = "Example-Objective-C.app"
-            BlueprintName = "Example-Objective-C"
-            ReferencedContainer = "container:MapboxNavigation.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -147,8 +135,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

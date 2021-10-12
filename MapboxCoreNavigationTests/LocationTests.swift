@@ -51,7 +51,6 @@ class LocationTests: XCTestCase {
             return XCTFail("Location should have snapped to route")
         }
         
-        
         XCTAssertTrue(locationAlongFirstStep.distance(from: snapped) < 1, "The location is less than 1 meter away from the calculated snapped location")
  
     }
