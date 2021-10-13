@@ -1,57 +1,30 @@
 Pod::Spec.new do |s|
-
-  # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-
   s.name = "MapboxNavigation"
-  s.version = "1.0.2"
+  s.version = "1.1.0"
   s.summary = "Complete turn-by-turn navigation interface for iOS."
 
   s.description  = <<-DESC
   The Mapbox Navigation SDK for iOS is a drop-in interface for turn-by-turn navigation along a route, complete with a well-designed map and easy-to-understand spoken directions. Routes are powered by Mapbox Directions.
                    DESC
-
-  s.homepage = "https://www.mapbox.com/ios-sdk/navigation/"
-  s.documentation_url = "https://www.mapbox.com/mapbox-navigation-ios/navigation/"
-
-  # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-
+  s.homepage = "https://swcode.io"
   s.license = { :type => "ISC", :file => "LICENSE.md" }
+  s.author = { "SWCode" => "info@swcode.io" }
 
-  # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
+  s.swift_version = "5"
+  s.ios.deployment_target = "11.0"
+  s.ios.vendored_frameworks = ["Vendor/Mapbox.xcframework"]
 
-  s.author = { "Mapbox" => "mobile@mapbox.com" }
-  s.social_media_url = "https://twitter.com/mapbox"
-
-  # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-
-  s.ios.deployment_target = "9.0"
-
-  # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-
-  s.source = { :git => "https://github.com/sw-code/flitsmeister-navigation-ios", :tag => "v#{s.version.to_s}" }
-
-  # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-
+  s.source = { :git => "https://github.com/sw-code/flitsmeister-navigation-ios.git", :tag => "v#{s.version.to_s}" }
   s.source_files = ["MapboxNavigation/**/*.{h,m,swift}", "MapboxCoreNavigation/{Date,Sequence,String}.swift"]
-
-  # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-
-  s.resources = ['MapboxNavigation/Resources/*/*', 'MapboxNavigation/Resources/*']
-
-  # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
+  s.resources = ["MapboxNavigation/Resources/*/*", "MapboxNavigation/Resources/*"]
 
   s.requires_arc = true
   s.module_name = "MapboxNavigation"
 
   s.dependency "MapboxCoreNavigation", "#{s.version.to_s}"
-  s.dependency "Mapbox-iOS-SDK", "~> 4.3"
+  s.dependency "MapboxDirections", "#{s.version.to_s}"
+  s.dependency "MapboxGeocoder", "#{s.version.to_s}"
+  s.dependency "MapboxSpeech", "#{s.version.to_s}"
   s.dependency "Solar", "~> 2.1"
-  s.dependency "MapboxSpeech", "~> 0.0.1"
-
-  # `swift_version` was introduced in CocoaPods 1.4.0. Without this check, if a user were to
-  # directly specify this podspec while using <1.4.0, ruby would throw an unknown method error.
-  if s.respond_to?(:swift_version)
-    s.swift_version = "4.0"
-  end
-
+  s.dependency "Turf", "#{s.version.to_s}"
 end
