@@ -155,7 +155,11 @@ static const NSString *kTSKKeychainPublicKeyTag = @"TSKKeychainPublicKeyTag"; //
 - (NSData *)hashSubjectPublicKeyInfoFromCertificate:(SecCertificateRef)certificate publicKeyAlgorithm:(TSKPublicKeyAlgorithm)publicKeyAlgorithm
 {
     __block NSData *cachedSubjectPublicKeyInfo;
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wshorten-64-to-32"
     NSNumber *algorithmKey = [NSNumber numberWithInt:publicKeyAlgorithm];
+#pragma clang diagnostic pop
     
     // Have we seen this certificate before? Look for the SPKI in the cache
     NSData *certificateData = (__bridge_transfer NSData *)(SecCertificateCopyData(certificate));
@@ -291,7 +295,10 @@ static const NSString *kTSKKeychainPublicKeyTag = @"TSKKeychainPublicKeyTag"; //
     SecTrustCreateWithCertificates(certificate, policy, &trust);
     
     // Get a public key reference for the certificate from the trust
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
     SecTrustEvaluate(trust, NULL);
+#pragma clang diagnostic pop
     SecKeyRef publicKey = SecTrustCopyPublicKey(trust);
     CFRelease(policy);
     CFRelease(trust);

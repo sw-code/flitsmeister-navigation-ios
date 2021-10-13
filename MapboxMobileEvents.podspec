@@ -1,43 +1,22 @@
 Pod::Spec.new do |s|
-
-  # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-
   s.name = 'MapboxMobileEvents'
   s.version = "0.5.0"
   s.summary = "Mapbox Mobile Events"
 
   s.description  = "Collects usage information to help Mapbox improve its products."
-
-  s.homepage = "https://www.mapbox.com/"
-
-  # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-
+  s.homepage = "https://swcode.io"
   s.license = { :type => "ISC", :file => "LICENSE.md" }
+  s.author = { "SWCode" => "info@swcode.io" }
 
-  # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
+  s.swift_version = '5'
+  s.ios.deployment_target = "11.0"
 
-  s.author = { "Mapbox" => "mobile@mapbox.com" }
-  s.social_media_url = "https://twitter.com/mapbox"
-
-  # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-
-  s.ios.deployment_target = "8.0"
-
-
-  # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-
-  s.source = { :git => "https://github.com/sw-code/flitsmeister-navigation-ios", :tag => "v#{s.version.to_s}" }
-
-  # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-
+  s.source = { :git => "https://github.com/sw-code/flitsmeister-navigation-ios.git", :tag => "v#{s.version.to_s}" }
   s.source_files = ["MapboxMobileEvents/**/*.{h,m}", "MapboxMobileEvents/Vendor/TrustKit/**/*.{h,m,c}"]
   s.resources = "MapboxMobileEvents/Resources/*"
   s.exclude_files = "MapboxMobileEvents/MMENamespacedDependencies.h"
 
-  # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-
   s.requires_arc = true
   s.module_name = 'MapboxMobileEvents'
   s.library = 'z'
-
 end

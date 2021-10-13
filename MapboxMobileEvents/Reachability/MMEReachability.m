@@ -461,8 +461,11 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 
 - (NSString *) description
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpointer-to-int-cast"
     NSString *description = [NSString stringWithFormat:@"<%@: %#x (%@)>",
                              NSStringFromClass([self class]), (unsigned int) self, [self currentReachabilityFlags]];
+#pragma clang diagnostic pop
     return description;
 }
 

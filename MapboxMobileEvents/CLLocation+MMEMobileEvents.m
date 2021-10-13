@@ -2,7 +2,7 @@
 
 @implementation CLLocation (MMEMobileEvents)
 
-void mme_linkCLLocationCategory(){}
+void mme_linkCLLocationCategory(void){}
 
 - (CLLocationDistance)mme_roundedAltitude {
     return round(self.altitude);
