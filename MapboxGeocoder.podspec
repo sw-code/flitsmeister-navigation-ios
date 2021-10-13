@@ -1,45 +1,22 @@
 Pod::Spec.new do |s|
-
-  # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-
-  s.name         = "MapboxGeocoder.swift"
+  s.name         = "MapboxGeocoder"
   s.version      = "0.10.2"
   s.summary      = "Mapbox Geocoding API for Swift and Objective-C."
-
   s.description  = <<-DESC
   MapboxGeocoder.swift makes it easy to connect your iOS, macOS, tvOS, or watchOS application to the Mapbox Geocoding API. MapboxGeocoder.swift exposes the power of the Carmen geocoder through a simple API similar to Core Location’s CLGeocoder.
                    DESC
+  s.homepage = "https://swcode.io"
+  s.license = { :type => "ISC", :file => "LICENSE.md" }
+  s.author = { "SWCode" => "info@swcode.io" }
 
-  s.homepage     = "https://www.mapbox.com/geocoding/"
+  s.swift_version = '5'
+  s.ios.deployment_target = "11.0"
+  s.ios.vendored_frameworks = ["Vendor/Mapbox.xcframework"]
 
-  # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-
-  s.license      = { :type => "ISC", :file => "LICENSE.md" }
-
-  # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-
-  s.author             = { "Mapbox" => "mobile@mapbox.com" }
-  s.social_media_url   = "https://twitter.com/mapbox"
-
-  # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-
-  #  When using multiple platforms
-  s.ios.deployment_target = "8.0"
-  s.osx.deployment_target = "10.10"
-  s.watchos.deployment_target = "2.0"
-  s.tvos.deployment_target = "9.0"
-
-  # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-
-  s.source       = { :git => "https://github.com/sw-code/flitsmeister-navigation-ios", :tag => "v#{s.version.to_s}" }
-
-  # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-
-  s.source_files  = ["MapboxGeocoder", "MapboxGeocoder/**/*.{h,m,swift}"]
-
-  # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
+  s.source       = { :git => "https://github.com/sw-code/flitsmeister-navigation-ios.git", :tag => "v#{s.version.to_s}" }
+  s.source_files  = ["MapboxGeocoder/**/*.{h,m,swift}"]
 
   s.requires_arc = true
   s.module_name = "MapboxGeocoder"
-  s.swift_version = "4.2"
+  s.swift_version = "5"
 end
