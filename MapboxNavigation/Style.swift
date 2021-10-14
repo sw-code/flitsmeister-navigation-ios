@@ -338,7 +338,7 @@ open class DistanceLabel: StylableLabel {
         emphasizedDistanceString.enumerateAttribute(.quantity, in: wholeRange, options: .longestEffectiveRangeNotRequired) { (value, range, stop) in
             let foregroundColor: UIColor
             let font: UIFont
-            if let _ = emphasizedDistanceString.attribute(NSAttributedStringKey.quantity, at: range.location, effectiveRange: nil) {
+            if let _ = emphasizedDistanceString.attribute(NSAttributedString.Key.quantity, at: range.location, effectiveRange: nil) {
                 foregroundColor = valueTextColor
                 font = valueFont
                 hasQuantity = true

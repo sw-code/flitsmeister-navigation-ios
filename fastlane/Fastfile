@@ -26,41 +26,39 @@ platform :ios do
     pod_lib_lint(podspec: "MapboxSpeech.podspec", sources: pod_sources, allow_warnings: true)
     pod_lib_lint(podspec: "MapboxGeocoder.podspec", sources: pod_sources, allow_warnings: true)
     pod_lib_lint(podspec: "MapboxDirections.podspec", sources: pod_sources, allow_warnings: true)
-    pod_lib_lint(podspec: "MapboxCoreNavigation.podspec", sources: pod_sources, include_podspecs: "MapboxDirections.podspec", allow_warnings: true)
+    pod_lib_lint(podspec: "MapboxCoreNavigation.podspec", sources: pod_sources, include_podspecs: "{Turf.podspec,MapboxDirections.podspec}", allow_warnings: true)
     pod_lib_lint(podspec: "MapboxNavigation.podspec", sources: pod_sources, include_podspecs: "{MapboxCoreNavigation.podspec,MapboxDirections.podspec,MapboxGeocoder.podspec,MapboxSpeech.podspec,Turf.podspec}", allow_warnings: true)
-    pod_lib_lint(podspec: "MapboxNavigationUI.podspec", sources: pod_sources, include_podspecs: "{MapboxCoreNavigation.podspec,MapboxNavigation.podspec,MapboxDirections.podspec}", allow_warnings: true)
+    pod_lib_lint(podspec: "MapboxNavigationUI.podspec", sources: pod_sources, include_podspecs: "{MapboxCoreNavigation.podspec,MapboxNavigation.podspec,MapboxDirections.podspec,MapboxGeocoder.podspec,MapboxSpeech.podspec,Turf.podspec}", allow_warnings: true)
 
-    # bump_pod(pod: "SpotARTourCommon.podspec", bump: bump_type, project: "./MapboxNavigation.xcodeproj", target: "")
-    # bump_pod(pod: "SpotARTourCore.podspec", bump: bump_type, project: "./MapboxNavigation.xcodeproj", target: "")
-    # bump_pod(pod: "SpotARTourAPI.podspec", bump: bump_type, project: "./MapboxNavigation.xcodeproj", target: "")
-    # bump_pod(pod: "SpotARTourAPITestSupport.podspec", bump: bump_type, project: "./MapboxNavigation.xcodeproj", target: "")
-    # bump_pod(pod: "SpotARTourAdapter.podspec", bump: bump_type, project: "./MapboxNavigation.xcodeproj", target: "")
-    # bump_pod(pod: "SpotARTourUI.podspec", bump: bump_type, project: "./MapboxNavigation.xcodeproj", target: "")
-    # bump_pod(pod: "SpotARTourUnity.podspec", bump: bump_type, project: "./MapboxNavigation.xcodeproj", target: "")
-    # bump_pod(pod: "SpotARTourUIMuseum.podspec", bump: bump_type, project: "./MapboxNavigation.xcodeproj", target: "")
+    bump_pod(pod: "Turf.podspec", bump: bump_type, project: "./MapboxNavigation.xcodeproj", target: "Turf")
+    bump_pod(pod: "MapboxSpeech.podspec", bump: bump_type, project: "./MapboxNavigation.xcodeproj", target: "MapboxSpeech")
+    bump_pod(pod: "MapboxGeocoder.podspec", bump: bump_type, project: "./MapboxNavigation.xcodeproj", target: "MapboxGeocoder")
+    bump_pod(pod: "MapboxDirections.podspec", bump: bump_type, project: "./MapboxNavigation.xcodeproj", target: "MapboxDirections")
+    bump_pod(pod: "MapboxCoreNavigation.podspec", bump: bump_type, project: "./MapboxNavigation.xcodeproj", target: "MapboxCoreNavigation")
+    bump_pod(pod: "MapboxNavigation.podspec", bump: bump_type, project: "./MapboxNavigation.xcodeproj", target: "MapboxNavigation")
+    bump_pod(pod: "MapboxNavigationUI.podspec", bump: bump_type, project: "./MapboxNavigation.xcodeproj", target: "MapboxNavigationUI")
 
-    # version = get_version_number(
-    #   xcodeproj: "./MapboxNavigation.xcodeproj",
-    #   target: "MapboxNavigationUI"
-    # )
-    # git_add
-    # git_commit(path: ".", message: "[skip ci] Version Bump to #{version}")
-    # add_git_tag(tag: version)
-    # push_to_git_remote(
-    #   tags: true,
-    #   set_upstream: true,
-    #   remote_branch: "master"
-    # )
+    version = get_version_number(
+      xcodeproj: "./MapboxNavigation.xcodeproj",
+      target: "MapboxNavigationUI"
+    )
+    git_add
+    git_commit(path: ".", message: "[skip ci] Version Bump to #{version}")
+    add_git_tag(tag: version)
+    push_to_git_remote(
+      tags: true,
+      set_upstream: true,
+      remote_branch: "master"
+    )
 
-    # pod_repo = "sw-code"
-    # pod_push(path: "SpotARTourCommon.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
-    # pod_push(path: "SpotARTourCore.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
-    # pod_push(path: "SpotARTourAPI.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
-    # pod_push(path: "SpotARTourAPITestSupport.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
-    # pod_push(path: "SpotARTourAdapter.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
-    # pod_push(path: "SpotARTourUI.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
-    # pod_push(path: "SpotARTourUnity.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
-    # pod_push(path: "SpotARTourUIMuseum.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
+    pod_repo = "sw-code"
+    pod_push(path: "Turf.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
+    pod_push(path: "MapboxSpeech.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
+    pod_push(path: "MapboxGeocoder.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
+    pod_push(path: "MapboxDirections.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
+    pod_push(path: "MapboxCoreNavigation.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
+    pod_push(path: "MapboxNavigation.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
+    pod_push(path: "MapboxNavigationUI.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
   end
 
   lane :bump_pod do |options|

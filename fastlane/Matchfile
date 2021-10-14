@@ -1,8 +1,0 @@
-it_url("git@github.com:sw-code/spotar-ios-certificates.git")
-
-storage_mode("git")
-type("appstore")
-
-app_identifier("io.swcode.spotar.tour.mapbox.Example-Swift")
-username("developers@swcode.io")
-team_id("8WSK5R7KW7")

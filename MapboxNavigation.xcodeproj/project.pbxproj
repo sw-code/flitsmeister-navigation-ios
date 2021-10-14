@@ -51,7 +51,6 @@
 		353280A11FA72871005175F3 /* InstructionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353280A01FA72871005175F3 /* InstructionLabel.swift */; };
 		353610CE1FAB6A8F00FB1746 /* BottomBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353610CD1FAB6A8F00FB1746 /* BottomBannerView.swift */; };
 		35379D0221480E1300FD402E /* CarPlayManager+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35379D0121480E1300FD402E /* CarPlayManager+Search.swift */; };
-		35379D0321480E5700FD402E /* RecentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352C35BF2134958F00D77796 /* RecentItem.swift */; };
 		353AA5601FCEF583009F0384 /* StyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353AA55F1FCEF583009F0384 /* StyleManager.swift */; };
 		353E3C8F20A3501C00FD1789 /* MGLStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353E3C8E20A3501C00FD1789 /* MGLStyle.swift */; };
 		353E68FC1EF0B7F8007B2AE5 /* NavigationLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353E68FB1EF0B7F8007B2AE5 /* NavigationLocationManager.swift */; };
@@ -126,6 +125,7 @@
 		3EA937B1F4DF73EB004BA6BE /* InstructionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA93230997B8D59E3B76C8C /* InstructionPresenter.swift */; };
 		3EA93A1FEFDDB709DE84BED9 /* ImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA938BE5468824787100228 /* ImageRepository.swift */; };
 		3EA93DC5BA00B5DFCBE7BAC3 /* RouteControllerDelegateSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA93EBD6E6BEC966BBE51D6 /* RouteControllerDelegateSpy.swift */; };
+		443083CE271846EE001B5E46 /* RecentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443083CD271846EE001B5E46 /* RecentItem.swift */; };
 		444C4FA52701A27B00D4C0AB /* MapboxDirections.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 445B9D232701A0F000FAABE9 /* MapboxDirections.framework */; };
 		444C4FA62701A27C00D4C0AB /* MapboxDirections.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 445B9D232701A0F000FAABE9 /* MapboxDirections.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		445B9D282701A0F000FAABE9 /* MapboxDirections.h in Headers */ = {isa = PBXBuildFile; fileRef = 445B9D252701A0F000FAABE9 /* MapboxDirections.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -662,7 +662,6 @@
 		352690481ECC843700E387BD /* Fixture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fixture.swift; sourceTree = "<group>"; };
 		3527D2B61EC45FBD00C07FC9 /* Fixtures.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Fixtures.xcassets; sourceTree = "<group>"; };
 		352AFFA22139986E00EB3567 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
-		352C35BF2134958F00D77796 /* RecentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecentItem.swift; path = ../Examples/Swift/RecentItem.swift; sourceTree = "<group>"; };
 		3531C2671F9DDC6E00D92F9A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
 		3531C2691F9DDC6F00D92F9A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Navigation.strings"; sourceTree = "<group>"; };
 		3531C26A1F9DDC6F00D92F9A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -756,6 +755,7 @@
 		3EA93A10227A7DAF1861D9F5 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		3EA93EBD6E6BEC966BBE51D6 /* RouteControllerDelegateSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteControllerDelegateSpy.swift; sourceTree = "<group>"; };
 		443083C927181653001B5E46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		443083CD271846EE001B5E46 /* RecentItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentItem.swift; sourceTree = "<group>"; };
 		445B9D232701A0F000FAABE9 /* MapboxDirections.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MapboxDirections.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		445B9D252701A0F000FAABE9 /* MapboxDirections.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapboxDirections.h; sourceTree = "<group>"; };
 		445B9D332701A14D00FAABE9 /* MBVisualInstructionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBVisualInstructionType.swift; sourceTree = "<group>"; };
@@ -1162,11 +1162,11 @@
 		3507F9FD213430CB0086B39E /* CarPlay */ = {
 			isa = PBXGroup;
 			children = (
+				443083CD271846EE001B5E46 /* RecentItem.swift */,
 				16C2A420211526EE00FE6E68 /* CarPlayManager.swift */,
 				16EF6C21211BA4B300AA580B /* CarPlayMapViewController.swift */,
 				C5FFAC1420D96F5B009E7F98 /* CarPlayNavigationViewController.swift */,
 				35379D0121480E1300FD402E /* CarPlayManager+Search.swift */,
-				352C35BF2134958F00D77796 /* RecentItem.swift */,
 			);
 			name = CarPlay;
 			sourceTree = "<group>";
@@ -2300,6 +2300,7 @@
 				C53208AB1E81FFB900910266 /* NavigationMapView.swift in Sources */,
 				16EF6C22211BA4B300AA580B /* CarPlayMapViewController.swift in Sources */,
 				351BEBF61E5BCC63006FE110 /* RouteMapViewController.swift in Sources */,
+				443083CE271846EE001B5E46 /* RecentItem.swift in Sources */,
 				16A509D7202BC0CA0011D788 /* ImageDownload.swift in Sources */,
 				8DB63A3A1FBBCA2200928389 /* RatingControl.swift in Sources */,
 				8D391CE21FD71E78006BB91F /* Waypoint.swift in Sources */,
@@ -2358,7 +2359,6 @@
 				3EA9371104016CD402547F1A /* ImageCache.swift in Sources */,
 				3EA9369C33A8F10DAE9043AA /* ImageDownloader.swift in Sources */,
 				3EA9301B03F8679BEDD4795F /* Cache.swift in Sources */,
-				35379D0321480E5700FD402E /* RecentItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2862,12 +2862,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/mapbox-ios-sdk-5.3.0-dynamic/dynamic",
-					"$(PROJECT_DIR)/Carthage/Build/MapboxGeocoder.xcframework/ios-arm64_armv7",
-					"$(PROJECT_DIR)/Carthage/Build/Turf.xcframework/ios-arm64_armv7",
-					"$(PROJECT_DIR)/Carthage/Build/MapboxDirections.xcframework/ios-arm64_armv7",
-					"$(PROJECT_DIR)/Carthage/Build/MapboxSpeech.xcframework/ios-arm64_armv7",
 					"$(PROJECT_DIR)/Carthage/Build/Solar.xcframework/ios-arm64_armv7",
 				);
 				INFOPLIST_FILE = MapboxNavigation/Info.plist;
@@ -2884,7 +2878,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -2901,12 +2895,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/mapbox-ios-sdk-5.3.0-dynamic/dynamic",
-					"$(PROJECT_DIR)/Carthage/Build/MapboxGeocoder.xcframework/ios-arm64_armv7",
-					"$(PROJECT_DIR)/Carthage/Build/Turf.xcframework/ios-arm64_armv7",
-					"$(PROJECT_DIR)/Carthage/Build/MapboxDirections.xcframework/ios-arm64_armv7",
-					"$(PROJECT_DIR)/Carthage/Build/MapboxSpeech.xcframework/ios-arm64_armv7",
 					"$(PROJECT_DIR)/Carthage/Build/Solar.xcframework/ios-arm64_armv7",
 				);
 				INFOPLIST_FILE = MapboxNavigation/Info.plist;
@@ -2923,7 +2911,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -2959,7 +2947,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.swcode.spotar.tour.mapbox.RouteTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -2992,7 +2980,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.swcode.spotar.tour.mapbox.RouteTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -3032,7 +3020,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -3066,7 +3054,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -3090,7 +3078,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MapboxNavigationTests/MapboxNavigationTests-Bridging.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example-Swift.app/Example-Swift";
 			};
 			name = Debug;
@@ -3114,7 +3102,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MapboxNavigationTests/MapboxNavigationTests-Bridging.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example-Swift.app/Example-Swift";
 			};
 			name = Release;
@@ -3581,7 +3569,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -3638,7 +3626,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -3660,10 +3648,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/MapboxDirections.xcframework/ios-arm64_armv7",
 					"$(PROJECT_DIR)/Carthage/Build/Polyline.xcframework/ios-arm64_armv7",
-					"$(PROJECT_DIR)/Carthage/Build/Turf.xcframework/ios-arm64_armv7",
 				);
 				INFOPLIST_FILE = MapboxCoreNavigation/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -3680,7 +3665,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -3698,10 +3683,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/MapboxDirections.xcframework/ios-arm64_armv7",
 					"$(PROJECT_DIR)/Carthage/Build/Polyline.xcframework/ios-arm64_armv7",
-					"$(PROJECT_DIR)/Carthage/Build/Turf.xcframework/ios-arm64_armv7",
 				);
 				INFOPLIST_FILE = MapboxCoreNavigation/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -3717,7 +3699,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -3747,7 +3729,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "MapboxCoreNavigationTests/MapboxCoreNavigationTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example-Swift.app/Example-Swift";
 			};
 			name = Debug;
@@ -3774,7 +3756,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MapboxCoreNavigationTests/MapboxCoreNavigationTests-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example-Swift.app/Example-Swift";
 			};
 			name = Release;

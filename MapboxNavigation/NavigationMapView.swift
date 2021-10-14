@@ -137,7 +137,7 @@ open class NavigationMapView: MGLMapView, UIGestureRecognizerDelegate {
 //        let contentFrame = bounds.insetBy(dx: contentInset.left, dy: contentInset.top)
 //        return CGPoint(x: contentFrame.midX, y: contentFrame.midY)
         
-        let contentFrame = UIEdgeInsetsInsetRect(bounds, safeArea)
+        let contentFrame = bounds.inset(by: safeArea)
         let courseViewWidth = userCourseView?.frame.width ?? 0
         let courseViewHeight = userCourseView?.frame.height ?? 0
         let edgePadding = UIEdgeInsets(top: (50 + courseViewHeight / 2),
@@ -346,7 +346,7 @@ open class NavigationMapView: MGLMapView, UIGestureRecognizerDelegate {
         
         if tracksUserCourse {
             let newCamera = camera ?? MGLMapCamera(lookingAtCenter: location.coordinate, altitude: altitude, pitch: 60, heading: location.course)
-            let function: CAMediaTimingFunction? = animated ? CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear) : nil
+            let function: CAMediaTimingFunction? = animated ? CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear) : nil
             setCamera(newCamera, withDuration: duration, animationTimingFunction: function, completionHandler: nil)
         } else {
             UIView.animate(withDuration: duration, delay: 0, options: [.curveLinear], animations: { [weak self] in
