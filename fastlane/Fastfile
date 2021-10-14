@@ -38,7 +38,7 @@ platform :ios do
     bump_pod(pod: "MapboxNavigation.podspec", bump: bump_type, project: "./MapboxNavigation.xcodeproj", target: "MapboxNavigation")
     bump_pod(pod: "MapboxNavigationUI.podspec", bump: bump_type, project: "./MapboxNavigation.xcodeproj", target: "MapboxNavigationUI")
 
-    version = get_version_number(
+    version = get_version_number_from_xcodeproj(
       xcodeproj: "./MapboxNavigation.xcodeproj",
       target: "MapboxNavigationUI"
     )
@@ -71,7 +71,7 @@ platform :ios do
       bump_type: bump_type
     )
     desc "Bump library pod #{pod} to #{version}"
-    increment_build_number_in_plist(xcodeproj: project_file, target: project_target)
-    increment_version_number_in_plist(version_number: version, xcodeproj: project_file, target: project_target)
+    increment_build_number_in_xcodeproj(xcodeproj: project_file, target: project_target)
+    increment_version_number_in_xcodeproj(version_number: version, xcodeproj: project_file, target: project_target)
   end
 end

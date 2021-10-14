@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "MapboxGeocoder"
-  s.version = "1.1.0"
+  s.version = "1.1.1"
   s.summary = "Mapbox Geocoding API for Swift and Objective-C."
   s.description  = <<-DESC
   MapboxGeocoder.swift makes it easy to connect your iOS, macOS, tvOS, or watchOS application to the Mapbox Geocoding API. MapboxGeocoder.swift exposes the power of the Carmen geocoder through a simple API similar to Core Location’s CLGeocoder.
