@@ -1,0 +1,79 @@
+update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  lane :bump_and_push_pods do |options|
+    desc "Push library pods"
+
+    if options[:bump]
+      bump_type = options[:bump]
+    else
+      commit = last_git_commit
+      parsed_commit = commit[:message].match(/\[([a-z]+)\:([a-z]+)\]/)
+
+      if parsed_commit
+        bump_type = parsed_commit[2]
+      end
+    end
+
+    if !bump_type
+      bump_type = "patch"
+    end
+    
+    pod_sources = ["https://cdn.cocoapods.org/", "https://#{ ENV['GIT_PERSONAL_ACCESS_TOKEN'] }github.com/sw-code/spotar-ios-pods"]
+    pod_lib_lint(podspec: "Turf.podspec", sources: pod_sources, allow_warnings: true)
+    pod_lib_lint(podspec: "MapboxSpeech.podspec", sources: pod_sources, allow_warnings: true)
+    pod_lib_lint(podspec: "MapboxGeocoder.podspec", sources: pod_sources, allow_warnings: true)
+    pod_lib_lint(podspec: "MapboxDirections.podspec", sources: pod_sources, allow_warnings: true)
+    pod_lib_lint(podspec: "MapboxCoreNavigation.podspec", sources: pod_sources, include_podspecs: "MapboxDirections.podspec", allow_warnings: true)
+    pod_lib_lint(podspec: "MapboxNavigation.podspec", sources: pod_sources, include_podspecs: "{MapboxCoreNavigation.podspec,MapboxDirections.podspec,MapboxGeocoder.podspec,MapboxSpeech.podspec,Turf.podspec}", allow_warnings: true)
+    pod_lib_lint(podspec: "MapboxNavigationUI.podspec", sources: pod_sources, include_podspecs: "{MapboxCoreNavigation.podspec,MapboxNavigation.podspec,MapboxDirections.podspec}", allow_warnings: true)
+
+    # bump_pod(pod: "SpotARTourCommon.podspec", bump: bump_type, project: "./MapboxNavigation.xcodeproj", target: "")
+    # bump_pod(pod: "SpotARTourCore.podspec", bump: bump_type, project: "./MapboxNavigation.xcodeproj", target: "")
+    # bump_pod(pod: "SpotARTourAPI.podspec", bump: bump_type, project: "./MapboxNavigation.xcodeproj", target: "")
+    # bump_pod(pod: "SpotARTourAPITestSupport.podspec", bump: bump_type, project: "./MapboxNavigation.xcodeproj", target: "")
+    # bump_pod(pod: "SpotARTourAdapter.podspec", bump: bump_type, project: "./MapboxNavigation.xcodeproj", target: "")
+    # bump_pod(pod: "SpotARTourUI.podspec", bump: bump_type, project: "./MapboxNavigation.xcodeproj", target: "")
+    # bump_pod(pod: "SpotARTourUnity.podspec", bump: bump_type, project: "./MapboxNavigation.xcodeproj", target: "")
+    # bump_pod(pod: "SpotARTourUIMuseum.podspec", bump: bump_type, project: "./MapboxNavigation.xcodeproj", target: "")
+
+    # version = get_version_number(
+    #   xcodeproj: "./MapboxNavigation.xcodeproj",
+    #   target: "MapboxNavigationUI"
+    # )
+    # git_add
+    # git_commit(path: ".", message: "[skip ci] Version Bump to #{version}")
+    # add_git_tag(tag: version)
+    # push_to_git_remote(
+    #   tags: true,
+    #   set_upstream: true,
+    #   remote_branch: "master"
+    # )
+
+    # pod_repo = "sw-code"
+    # pod_push(path: "SpotARTourCommon.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
+    # pod_push(path: "SpotARTourCore.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
+    # pod_push(path: "SpotARTourAPI.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
+    # pod_push(path: "SpotARTourAPITestSupport.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
+    # pod_push(path: "SpotARTourAdapter.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
+    # pod_push(path: "SpotARTourUI.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
+    # pod_push(path: "SpotARTourUnity.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
+    # pod_push(path: "SpotARTourUIMuseum.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
+  end
+
+  lane :bump_pod do |options|
+    pod = options[:pod]
+    bump_type = options[:bump]
+    project_file = options[:project]
+    project_target = options[:target]
+    version = version_bump_podspec(
+      path: pod,
+      bump_type: bump_type
+    )
+    desc "Bump library pod #{pod} to #{version}"
+    increment_build_number_in_plist(xcodeproj: project_file, target: project_target)
+    increment_version_number_in_plist(version_number: version, xcodeproj: project_file, target: project_target)
+  end
+end
