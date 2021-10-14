@@ -2,7 +2,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'macos-latest'
+  vmImage: 'macos-11'
 
 variables:
 - group: spotar-tour-ios
