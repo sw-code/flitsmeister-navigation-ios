@@ -22,9 +22,9 @@ Pod::Spec.new do |s|
 
   s.frameworks = ["CarPlay"]
 
-  s.dependency "MapboxDirections", "#{s.version.to_s}"
-  s.dependency "MapboxGeocoder", "#{s.version.to_s}"
-  s.dependency "MapboxSpeech", "#{s.version.to_s}"
+  s.dependency "MapboxDirections"
+  s.dependency "MapboxGeocoder"
+  s.dependency "MapboxSpeech"
   s.dependency "Solar", "~> 2.1"
-  s.dependency "Turf", "#{s.version.to_s}"
+  s.dependency "Turf"
 end
