@@ -29,10 +29,6 @@ steps:
       pod repo add sw-code "https://$(personalAccessToken)@github.com/sw-code/spotar-ios-pods"
       pod repo add sw-code-mapbox "https://$(personalAccessToken)@github.com/sw-code/flitsmeister-navigation-ios"
 - task: CmdLine@2
-  displayName: 'Add pod source'
-  inputs:
-    script: 
-- task: CmdLine@2
   displayName: 'Update fastlane'
   inputs:
     script: 'bundle update fastlane'
