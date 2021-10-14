@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "11.0"
   s.ios.vendored_frameworks = ["Vendor/Mapbox.xcframework"]
 
-  s.source = { :git => "https://github.com/sw-code/flitsmeister-navigation-ios.git", :tag => "v#{s.version.to_s}" }
+  s.source = { :git => "https://github.com/sw-code/flitsmeister-navigation-ios.git", :tag => "#{s.version.to_s}" }
   s.source_files = ["MapboxNavigation/**/*.{h,m,swift}", "MapboxCoreNavigation/{Date,Sequence,String}.swift"]
   s.resources = ["MapboxNavigation/Resources/*/*", "MapboxNavigation/Resources/*"]
 

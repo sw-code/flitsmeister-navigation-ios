@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "11.0"
   s.ios.vendored_frameworks = ["Vendor/Mapbox.xcframework"]
 
-  s.source        = { :git => "https://github.com/sw-code/flitsmeister-navigation-ios.git", :tag => "v#{s.version.to_s}" }
+  s.source        = { :git => "https://github.com/sw-code/flitsmeister-navigation-ios.git", :tag => "#{s.version.to_s}" }
   s.source_files  = ["MapboxGeocoder/**/*.{h,m,swift}"]
 
   s.requires_arc = true
