@@ -14,6 +14,7 @@ Pod::Spec.new do |s|
 
   s.source = { :git => "https://github.com/sw-code/flitsmeister-navigation-ios.git", :tag => "#{s.version.to_s}" }
   s.source_files = ["MapboxCoreNavigation/**/*.{h,m,swift}"]
+  s.resources = ["MapboxCoreNavigation/Resources/*/*", "MapboxCoreNavigation/Resources/*"]
 
   s.requires_arc = true
   s.module_name = "MapboxCoreNavigation"
