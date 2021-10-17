@@ -53,6 +53,8 @@ extension CLLocationDistance {
             return yards
         case .mile:
             return miles
+        @unknown default:
+            fatalError()
         }
     }
 }
@@ -84,6 +86,8 @@ struct RoundingTable {
                 unitLength = .yards
             case .mile:
                 unitLength = .miles
+            @unknown default:
+                fatalError()
             }
             var measurement = Measurement(value: distance, unit: .meters).converted(to: unitLength)
             measurement.value.round(roundingIncrement: roundingIncrement)
