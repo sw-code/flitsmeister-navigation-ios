@@ -8,10 +8,12 @@ Pod::Spec.new do |s|
   s.author = { "SWCode" => "info@swcode.io" }
 
   s.swift_version = "5"
+  s.platform = :ios
   s.ios.deployment_target = "11.0"
 
-  s.source       = { :git => "https://github.com/sw-code/flitsmeister-navigation-ios.git", :tag => "#{s.version.to_s}" }
-  s.source_files = ["Turf/**/*.{swift,h,m}"]
+  s.source = { :git => "https://github.com/sw-code/flitsmeister-navigation-ios.git", :tag => "#{s.version.to_s}" }
+  s.source_files = ["Turf/**/*.{swift}"]
+  s.public_header_files = 'Turf/*.h'
 
   s.requires_arc = true
   s.module_name = "Turf"
