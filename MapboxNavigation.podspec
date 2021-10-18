@@ -21,10 +21,10 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.module_name = "MapboxNavigation"
 
-  s.dependency "MapboxCoreNavigation"
-  s.dependency "MapboxDirections"
-  s.dependency "MapboxGeocoder"
-  s.dependency "MapboxSpeech"
+  s.dependency "MapboxCoreNavigation", "~> 1.1.2"
+  s.dependency "MapboxDirections", "~> 1.1.2"
+  s.dependency "MapboxGeocoder", "~> 1.1.2"
+  s.dependency "MapboxSpeech", "~> 1.1.2"
   s.dependency "Solar", "~> 2.1"
-  s.dependency "Turf"
+  s.dependency "Turf", "~> 1.1.2"
 end
