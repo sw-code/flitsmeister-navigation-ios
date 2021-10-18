@@ -21,7 +21,7 @@ platform :ios do
       bump_type = "patch"
     end
     
-    pod_sources = ["https://cdn.cocoapods.org/", "https://#{ ENV['GIT_PERSONAL_ACCESS_TOKEN'] }github.com/sw-code/spotar-ios-pods"]
+    pod_sources = ["https://#{ ENV['GIT_PERSONAL_ACCESS_TOKEN'] }github.com/sw-code/spotar-ios-pods", "https://cdn.cocoapods.org/"]
     pod_lib_lint(podspec: "Turf.podspec", sources: pod_sources, allow_warnings: true)
     pod_lib_lint(podspec: "MapboxSpeech.podspec", sources: pod_sources, allow_warnings: true)
     pod_lib_lint(podspec: "MapboxGeocoder.podspec", sources: pod_sources, allow_warnings: true)

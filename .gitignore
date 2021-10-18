@@ -21,3 +21,4 @@ fastlane/README.md
 fastlane/report.xml
 
 Examples/Swift/Navigation_Example.mobileprovision
+tagreplace.sh
