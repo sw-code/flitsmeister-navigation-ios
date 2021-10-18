@@ -11,40 +11,40 @@ public typealias CLLocationDegrees = Double
 import CoreLocation
 #endif
 
-extension CLLocationDirection {
+public extension CLLocationDirection {
     /**
      Returns a normalized number given min and max bounds.
      */
-    public func wrap(min minimumValue: CLLocationDirection, max maximumValue: CLLocationDirection) -> CLLocationDirection {
+    func wrap(min minimumValue: CLLocationDirection, max maximumValue: CLLocationDirection) -> CLLocationDirection {
         let d = maximumValue - minimumValue
         return fmod((fmod((self - minimumValue), d) + d), d) + minimumValue
     }
 }
 
-extension CLLocationDegrees {
+public extension CLLocationDegrees {
     /**
      Returns the direction in radians.
      */
-    public func toRadians() -> LocationRadians {
+    func toRadians() -> LocationRadians {
         return self * .pi / 180.0
     }
     
     /**
      Returns the direction in degrees.
      */
-    public func toDegrees() -> CLLocationDirection {
+    func toDegrees() -> CLLocationDirection {
         return self * 180.0 / .pi
     }
 }
 
-extension CLLocationDirection {
+public extension CLLocationDirection {
     /**
      Returns the smaller difference between the receiver and another direction.
      
      To obtain the larger difference between the two directions, subtract the
      return value from 360°.
      */
-    public func difference(from beta: CLLocationDirection) -> CLLocationDirection {
+    func difference(from beta: CLLocationDirection) -> CLLocationDirection {
         let phi = abs(beta - self).truncatingRemainder(dividingBy: 360)
         return phi > 180 ? 360 - phi : phi
     }
