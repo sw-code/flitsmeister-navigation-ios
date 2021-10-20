@@ -9,6 +9,12 @@ public class SpotARNavigationViewController {
     public var navigationViewController: NavigationViewController!
     public var delegate: SpotARNavigationUIDelegate?
     
+    public var navigationView: UIView {
+        get {
+            return navigationViewController.view
+        }
+    }
+    
     public init() {}
     
     public func startNavigation(routes: [Route], simulated: Bool = false) {
@@ -24,6 +30,14 @@ public class SpotARNavigationViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(progressDidChange(_ :)), name: .routeControllerProgressDidChange, object: nil)
         
         delegate?.wantsToPresent(viewController: navigationViewController)
+    }
+    
+    public func readjustMapCenter() {
+        if navigationViewController.mapView != nil {
+            let halfMapHeight = navigationViewController.mapView!.bounds.height / 2
+            let topPadding = halfMapHeight - 30
+            navigationViewController.mapView?.setContentInset(UIEdgeInsets(top: topPadding, left: 0, bottom: 0, right: 0), animated: true, completionHandler: nil)
+        }
     }
     
     @objc func progressDidChange(_ notification: NSNotification  ) {
@@ -45,14 +59,6 @@ public class SpotARNavigationViewController {
     
     private func updateUserPuck(_ location: CLLocation) {
         navigationViewController.mapView?.updateCourseTracking(location: location, animated: true)
-    }
-    
-    private func readjustMapCenter() {
-        if navigationViewController.mapView != nil {
-            let halfMapHeight = navigationViewController.mapView!.bounds.height / 2
-            let topPadding = halfMapHeight - 30
-            navigationViewController.mapView?.setContentInset(UIEdgeInsets(top: topPadding, left: 0, bottom: 0, right: 0), animated: true, completionHandler: nil)
-        }
     }
     
     private func getNavigationLocationManager(simulated: Bool) -> NavigationLocationManager {
