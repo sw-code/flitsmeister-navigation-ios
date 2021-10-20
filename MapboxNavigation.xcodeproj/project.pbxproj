@@ -2040,10 +2040,9 @@
 			};
 			buildConfigurationList = C5ADFBC31DDCC7840011824B /* Build configuration list for PBXProject "MapboxNavigation" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 				"zh-Hans",
@@ -2999,15 +2998,8 @@
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 arm64e armv7";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/mapbox-ios-sdk-5.3.0-dynamic/dynamic",
-					"$(PROJECT_DIR)/Carthage/Build/MapboxDirections.xcframework/ios-arm64_armv7",
-					"$(PROJECT_DIR)/Carthage/Build/MapboxGeocoder.xcframework/ios-arm64_armv7",
-					"$(PROJECT_DIR)/Carthage/Build/MapboxMobileEvents.xcframework/ios-arm64_armv7",
-					"$(PROJECT_DIR)/Carthage/Build/MapboxSpeech.xcframework/ios-arm64_armv7",
 					"$(PROJECT_DIR)/Carthage/Build/Polyline.xcframework/ios-arm64_armv7",
 					"$(PROJECT_DIR)/Carthage/Build/Solar.xcframework/ios-arm64_armv7",
-					"$(PROJECT_DIR)/Carthage/Build/Turf.xcframework/ios-arm64_armv7",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Examples/Swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -3034,15 +3026,8 @@
 				DEVELOPMENT_TEAM = 8WSK5R7KW7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/mapbox-ios-sdk-5.3.0-dynamic/dynamic",
-					"$(PROJECT_DIR)/Carthage/Build/MapboxDirections.xcframework/ios-arm64_armv7",
-					"$(PROJECT_DIR)/Carthage/Build/MapboxGeocoder.xcframework/ios-arm64_armv7",
-					"$(PROJECT_DIR)/Carthage/Build/MapboxMobileEvents.xcframework/ios-arm64_armv7",
-					"$(PROJECT_DIR)/Carthage/Build/MapboxSpeech.xcframework/ios-arm64_armv7",
 					"$(PROJECT_DIR)/Carthage/Build/Polyline.xcframework/ios-arm64_armv7",
 					"$(PROJECT_DIR)/Carthage/Build/Solar.xcframework/ios-arm64_armv7",
-					"$(PROJECT_DIR)/Carthage/Build/Turf.xcframework/ios-arm64_armv7",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Examples/Swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

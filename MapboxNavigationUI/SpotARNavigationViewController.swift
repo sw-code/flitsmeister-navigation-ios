@@ -4,9 +4,9 @@ import MapboxNavigation
 import MapboxDirections
 
 public class SpotARNavigationViewController {
-    private var navigationViewController: NavigationViewController!
     private var routes: [Route]?
     
+    public var navigationViewController: NavigationViewController!
     public var delegate: SpotARNavigationUIDelegate?
     
     public init() {}

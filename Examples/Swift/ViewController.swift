@@ -5,6 +5,7 @@ import MapboxNavigationUI
 import MapboxDirections
 import UserNotifications
 import MapKit
+import Mapbox
 
 private typealias RouteRequestSuccess = (([Route]) -> Void)
 private typealias RouteRequestFailure = ((NSError) -> Void)
@@ -208,7 +209,7 @@ extension ViewController: NavigationMapViewDelegate {
 
     func navigationMapView(_ mapView: NavigationMapView, didSelect route: Route) {
         guard let routes = routes else { return }
-        guard let index = routes.index(where: { $0 == route }) else { return }
+        guard let index = routes.firstIndex(where: { $0 == route }) else { return }
         self.routes!.remove(at: index)
         self.routes!.insert(route, at: 0)
     }
