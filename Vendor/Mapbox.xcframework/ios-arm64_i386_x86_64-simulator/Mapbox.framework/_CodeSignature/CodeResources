@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		bOcUt5wWqYFYZykn+kSAUi5D4+k=
+		KM4t48z7qUlt4mAgwXkCn0df0SE=
 		</data>
 		<key>Base.lproj/Foundation.strings</key>
 		<data>
@@ -150,7 +150,7 @@
 		</data>
 		<key>Headers/MGLMapView.h</key>
 		<data>
-		oU/gzQNeZlQHsggOIAl8LowMCYY=
+		jnQfUNeUebxe0GSMEEXxdUMzGFo=
 		</data>
 		<key>Headers/MGLMapViewDelegate.h</key>
 		<data>
@@ -306,7 +306,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		KkQ3RaeSK3/JEKMSkK4fc1iGMAo=
+		7bbIoOG/qVi26WAeiWbxESDcWQI=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -1025,11 +1025,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			bOcUt5wWqYFYZykn+kSAUi5D4+k=
+			KM4t48z7qUlt4mAgwXkCn0df0SE=
 			</data>
 			<key>hash2</key>
 			<data>
-			4tBqervRLRGcVxQAnDf8YFlaxivsC2p7TaYI5FNzhyE=
+			XJW52Bbkcqmwbg1quGrXxPwKwcUYZ8WdqREry0DvEGo=
 			</data>
 		</dict>
 		<key>Base.lproj/Foundation.strings</key>
@@ -1421,11 +1421,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			oU/gzQNeZlQHsggOIAl8LowMCYY=
+			jnQfUNeUebxe0GSMEEXxdUMzGFo=
 			</data>
 			<key>hash2</key>
 			<data>
-			J+PzzT9AAtHZ6skU6L8c92d3a42hkhYSVz9WSwLHCjc=
+			G3O756GN7VgsJzYLa76qxI1hZBdNxSJpOEXEl64hMIQ=
 			</data>
 		</dict>
 		<key>Headers/MGLMapViewDelegate.h</key>
