@@ -245,6 +245,7 @@
 		44AAA7D2271592D400CBC3B3 /* MapboxDirections.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 445B9D232701A0F000FAABE9 /* MapboxDirections.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44AAA7D5271592D400CBC3B3 /* MapboxNavigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 351BEBD71E5BCC28006FE110 /* MapboxNavigation.framework */; platformFilter = ios; };
 		44AAA7D6271592D400CBC3B3 /* MapboxNavigation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 351BEBD71E5BCC28006FE110 /* MapboxNavigation.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		44F073FB27297E56009FB690 /* NavigationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F073FA27297E55009FB690 /* NavigationStyle.swift */; };
 		64847A041F04629D003F3A69 /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64847A031F04629D003F3A69 /* Feedback.swift */; };
 		8D07C5A820B612310093D779 /* EmptyStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 8D07C5A720B612310093D779 /* EmptyStyle.json */; };
 		8D24A2F62040960C0098CBF8 /* UIEdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D24A2F52040960C0098CBF8 /* UIEdgeInsets.swift */; };
@@ -822,6 +823,7 @@
 		44AAA7C727158FBB00CBC3B3 /* SpotARNavigationViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotARNavigationViewControllerDelegate.swift; sourceTree = "<group>"; };
 		44AAA7C927158FFA00CBC3B3 /* SpotARVisualInstructionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotARVisualInstructionDelegate.swift; sourceTree = "<group>"; };
 		44AAA7CB271590FC00CBC3B3 /* SpotARNavigationUIDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotARNavigationUIDelegate.swift; sourceTree = "<group>"; };
+		44F073FA27297E55009FB690 /* NavigationStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStyle.swift; sourceTree = "<group>"; };
 		64847A031F04629D003F3A69 /* Feedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		8D07C5A720B612310093D779 /* EmptyStyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EmptyStyle.json; sourceTree = "<group>"; };
 		8D24A2F52040960C0098CBF8 /* UIEdgeInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEdgeInsets.swift; sourceTree = "<group>"; };
@@ -1201,6 +1203,7 @@
 				DADAD82C20350849002E25CA /* MBRouteVoiceController.h */,
 				DADAD82D20350849002E25CA /* MBRouteVoiceController.m */,
 				C53208AA1E81FFB900910266 /* NavigationMapView.swift */,
+				44F073FA27297E55009FB690 /* NavigationStyle.swift */,
 				359D1B271FFE70D30052FA42 /* NavigationView.swift */,
 				351BEBEA1E5BCC63006FE110 /* NavigationViewController.swift */,
 				351BEBE41E5BCC63006FE110 /* RouteMapViewController.swift */,
@@ -2301,6 +2304,7 @@
 				351BEBF61E5BCC63006FE110 /* RouteMapViewController.swift in Sources */,
 				443083CE271846EE001B5E46 /* RecentItem.swift in Sources */,
 				16A509D7202BC0CA0011D788 /* ImageDownload.swift in Sources */,
+				44F073FB27297E56009FB690 /* NavigationStyle.swift in Sources */,
 				8DB63A3A1FBBCA2200928389 /* RatingControl.swift in Sources */,
 				8D391CE21FD71E78006BB91F /* Waypoint.swift in Sources */,
 				353EC9D71FB09708002EB0AB /* StepsViewController.swift in Sources */,
@@ -2871,7 +2875,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = io.swcode.spotar.tour.mapbox.MapboxNavigation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2904,7 +2908,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = io.swcode.spotar.tour.mapbox.MapboxNavigation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -3124,7 +3128,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = io.swcode.spotar.tour.mapbox.MapboxDirections;
@@ -3168,7 +3172,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = io.swcode.spotar.tour.mapbox.MapboxDirections;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -3207,7 +3211,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = io.swcode.spotar.tour.mapbox.MapboxGeocoder;
@@ -3247,7 +3251,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = io.swcode.spotar.tour.mapbox.MapboxGeocoder;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -3286,7 +3290,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = io.swcode.spotar.tour.mapbox.MapboxSpeech;
@@ -3326,7 +3330,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = io.swcode.spotar.tour.mapbox.MapboxSpeech;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -3365,7 +3369,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = io.swcode.spotar.tour.mapbox.Turf;
@@ -3405,7 +3409,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = io.swcode.spotar.tour.mapbox.Turf;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -3445,7 +3449,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = io.swcode.spotar.tour.mapbox.MapboxNavigationUI;
@@ -3485,7 +3489,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = io.swcode.spotar.tour.mapbox.MapboxNavigationUI;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -3643,7 +3647,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = io.swcode.spotar.tour.mapbox.MapboxCoreNavigation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -3678,7 +3682,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = io.swcode.spotar.tour.mapbox.MapboxCoreNavigation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
