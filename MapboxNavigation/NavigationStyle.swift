@@ -1,5 +1,4 @@
 import Mapbox
-import MapboxNavigation
 import SwiftUI
 import GLKit
 
@@ -27,10 +26,6 @@ open class NavigationStyle: Style {
         BaseInstructionsBannerView.appearance().isHidden = true
         BottomBannerContentView.appearance().isHidden = true
         BottomBannerView.appearance().isHidden = true
-        CalloutView.appearance().isHidden = true
-        CustomAnnotationView.appearance().isHidden = true
-        CustomUserLocationAnnotationView.appearance().isHidden = true
-        DiscoverView.appearance().isHidden = true
         DismissButton.appearance().isHidden = true
         DistanceLabel.appearance().isHidden = true
         DistanceRemainingLabel.appearance().isHidden = true
@@ -52,7 +47,6 @@ open class NavigationStyle: Style {
         NavigationMapView.appearance().isHidden = true
         NextBannerView.appearance().isHidden = true
         NextInstructionLabel.appearance().isHidden = true
-        PopoverView.appearance().isHidden = true
         PrimaryLabel.appearance().isHidden = true
         ProgressBar.appearance().isHidden = true
         ReportButton.appearance().isHidden = true
