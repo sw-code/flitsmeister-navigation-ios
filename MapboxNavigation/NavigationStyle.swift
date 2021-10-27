@@ -2,7 +2,7 @@ import Mapbox
 import SwiftUI
 import GLKit
 
-@objc(MBDayStyle)
+@objc(MBNavigationStyle)
 open class NavigationStyle: Style {
     
     public required init() {
