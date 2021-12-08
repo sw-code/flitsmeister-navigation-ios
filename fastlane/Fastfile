@@ -53,12 +53,12 @@ platform :ios do
 
     pod_repo = "sw-code"
     pod_push(path: "Turf.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
-    pod_push(path: "MapboxSpeech.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
-    pod_push(path: "MapboxGeocoder.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
-    pod_push(path: "MapboxDirections.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
-    pod_push(path: "MapboxCoreNavigation.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
-    pod_push(path: "MapboxNavigation.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
-    pod_push(path: "MapboxNavigationUI.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true)
+    pod_push(path: "MapboxSpeech.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true, synchronous: true)
+    pod_push(path: "MapboxGeocoder.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true, synchronous: true)
+    pod_push(path: "MapboxDirections.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true, synchronous: true)
+    pod_push(path: "MapboxCoreNavigation.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true, synchronous: true)
+    pod_push(path: "MapboxNavigation.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true, synchronous: true)
+    pod_push(path: "MapboxNavigationUI.podspec", sources: pod_sources, repo: pod_repo, skip_import_validation: true, skip_tests: true, allow_warnings: true, synchronous: true)
   end
 
   lane :bump_pod do |options|

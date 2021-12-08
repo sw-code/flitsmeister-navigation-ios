@@ -15,12 +15,7 @@ open class NavigationStyle: Style {
     open override func apply() {
         super.apply()
         
-        // General styling
-        if let color = UIApplication.shared.delegate?.window??.tintColor {
-            tintColor = color
-        } else {
-            tintColor = UIColor(named: "accentColor", in: Bundle.main, compatibleWith: nil) ?? .blue
-        }
+        tintColor = UIColor(named: "accentPrimary", in: Bundle.main, compatibleWith: nil) ?? .blue
         
         ArrivalTimeLabel.appearance().isHidden = true
         BaseInstructionsBannerView.appearance().isHidden = true
@@ -51,6 +46,7 @@ open class NavigationStyle: Style {
         ProgressBar.appearance().isHidden = true
         ReportButton.appearance().isHidden = true
         ResumeButton.appearance().isHidden = true
+        UILabel.appearance(whenContainedInInstancesOf: [ResumeButton.self]).isHidden = true
         SecondaryLabel.appearance().isHidden = true
         SeparatorView.appearance().isHidden = true
         StatusView.appearance().isHidden = true
@@ -67,9 +63,9 @@ open class NavigationStyle: Style {
         WayNameView.appearance().isHidden = true
         
         UserPuckCourseView.appearance().puckColor = .white
-        UserPuckCourseView.appearance().fillColor = .red
+        UserPuckCourseView.appearance().fillColor = tintColor ?? .red
         UserPuckCourseView.appearance().shadowColor = .white
         UserPuckCourseView.appearance().backgroundColor = .clear
-        UserPuckCourseView.appearance().tintColor = .red
+        UserPuckCourseView.appearance().tintColor = tintColor ?? .red
     }
 }
