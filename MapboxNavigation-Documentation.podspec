@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.author = { "SWCode" => "info@swcode.io" }
 
   s.swift_version = "5"
-  s.ios.deployment_target = "11.0"
+  s.ios.deployment_target = "12.1"
   s.ios.vendored_frameworks = ["Vendor/Mapbox.xcframework"]
 
   s.source = { :git => "https://github.com/sw-code/flitsmeister-navigation-ios.git", :tag => "#{s.version.to_s}" }

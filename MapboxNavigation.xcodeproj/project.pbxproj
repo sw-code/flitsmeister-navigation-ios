@@ -158,6 +158,7 @@
 		445B9D822701A1F600FAABE9 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445B9D7D2701A1F600FAABE9 /* String.swift */; };
 		4462D2C427171AD500E956DE /* Polyline.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A2ACE0270EEFD500B69877 /* Polyline.xcframework */; };
 		4462D2C527171AEC00E956DE /* Polyline.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A2ACE0270EEFD500B69877 /* Polyline.xcframework */; };
+		4476340227E89D2300965C6D /* Mapbox in Frameworks */ = {isa = PBXBuildFile; productRef = 4476340127E89D2300965C6D /* Mapbox */; };
 		447B87A7270DAC3900D3FD72 /* MapboxGeocoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 447B87A4270DAC3900D3FD72 /* MapboxGeocoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		447B87B2270DACF400D3FD72 /* MBPlacemarkScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447B87AB270DACF400D3FD72 /* MBPlacemarkScope.swift */; };
 		447B87B3270DACF400D3FD72 /* CoreLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447B87AC270DACF400D3FD72 /* CoreLocation.swift */; };
@@ -1017,6 +1018,7 @@
 				447B88B8270DBEC300D3FD72 /* MapboxDirections.framework in Frameworks */,
 				447B8912270DCB6C00D3FD72 /* Turf.framework in Frameworks */,
 				447B88C8270DBEC300D3FD72 /* MapboxSpeech.framework in Frameworks */,
+				4476340227E89D2300965C6D /* Mapbox in Frameworks */,
 				447B88BC270DBEC300D3FD72 /* MapboxGeocoder.framework in Frameworks */,
 				447B88B4270DBEC300D3FD72 /* MapboxCoreNavigation.framework in Frameworks */,
 				44AAA7BE271586F200CBC3B3 /* MapboxNavigationUI.framework in Frameworks */,
@@ -1720,8 +1722,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 351BEBDE1E5BCC28006FE110 /* Build configuration list for PBXNativeTarget "MapboxNavigation" */;
 			buildPhases = (
-				351BEBD21E5BCC28006FE110 /* Sources */,
 				351BEBD41E5BCC28006FE110 /* Headers */,
+				351BEBD21E5BCC28006FE110 /* Sources */,
 				351BEBD51E5BCC28006FE110 /* Resources */,
 				351BEBD31E5BCC28006FE110 /* Frameworks */,
 				445B9D0C26FB626D00FAABE9 /* Embed Frameworks */,
@@ -1786,6 +1788,9 @@
 				44AAA7BD271586F200CBC3B3 /* PBXTargetDependency */,
 			);
 			name = "Example-Swift";
+			packageProductDependencies = (
+				4476340127E89D2300965C6D /* Mapbox */,
+			);
 			productName = "Example-Swift";
 			productReference = 358D14631E5E3B7700ADE590 /* Example-Swift.app */;
 			productType = "com.apple.product-type.application";
@@ -1913,8 +1918,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C5ADFBDD1DDCC7840011824B /* Build configuration list for PBXNativeTarget "MapboxCoreNavigation" */;
 			buildPhases = (
-				C5ADFBC41DDCC7840011824B /* Sources */,
 				C5ADFBC61DDCC7840011824B /* Headers */,
+				C5ADFBC41DDCC7840011824B /* Sources */,
 				C5ADFBC71DDCC7840011824B /* Resources */,
 				35A7DBEB1E3A1C59000BAB5C /* Frameworks */,
 				445B9D0526FB56E200FAABE9 /* Embed Frameworks */,
@@ -2198,6 +2203,8 @@
 				"$(SRCROOT)/Carthage/Build/Polyline.xcframework/ios-arm64_armv7/Polyline.framework",
 			);
 			name = "Carthage copy frameworks";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2229,6 +2236,7 @@
 				"$(SRCROOT)/Carthage/Build/Cedar.xcframework/ios-arm64/Cedar.framework",
 				"$(SRCROOT)/Carthage/Build/Polyline.xcframework/ios-arm64_armv7/Polyline.framework",
 				"$(SRCROOT)/Carthage/Build/Solar.xcframework/ios-arm64_armv7/Solar.framework",
+				"$(SRCROOT)/Carthage/Build/FBSnapshotTestCase.xcframework/ios-arm64/FBSnapshotTestCase.framework",
 			);
 			name = "Carthage copy frameworks";
 			outputPaths = (
@@ -2913,7 +2921,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8WSK5R7KW7;
+				ENABLE_BITCODE = NO;
 				"EXCLUDED_ARCHS[sdk=iphoneos*]" = "x86_64 i386";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "armv7 arm64e arm64";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2948,7 +2957,8 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8WSK5R7KW7;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -2974,6 +2984,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -2986,7 +2997,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/Solar.xcframework/ios-arm64_armv7",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Examples/Swift/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3006,6 +3017,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 8WSK5R7KW7;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3014,7 +3026,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/Solar.xcframework/ios-arm64_armv7",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Examples/Swift/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3485,6 +3497,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -3532,7 +3545,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -3549,6 +3562,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -3590,7 +3604,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -3856,6 +3870,11 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		4417D91927298A0C0094E9BB /* Mapbox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4417D91827298A0C0094E9BB /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */;
+			productName = Mapbox;
+		};
+		4476340127E89D2300965C6D /* Mapbox */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4417D91827298A0C0094E9BB /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */;
 			productName = Mapbox;

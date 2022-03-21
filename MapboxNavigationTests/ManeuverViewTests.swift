@@ -13,7 +13,7 @@ class ManeuverViewTests: FBSnapshotTestCase {
         super.setUp()
         maneuverView.backgroundColor = .white
         recordMode = false
-        agnosticOptions = [.OS, .device]
+//        agnosticOptions = [.OS, .device]
         usesDrawViewHierarchyInRect = true
 
         let window = UIWindow(frame: maneuverView.bounds)

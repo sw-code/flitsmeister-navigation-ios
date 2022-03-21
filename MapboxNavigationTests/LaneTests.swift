@@ -19,7 +19,7 @@ class LaneTests: FBSnapshotTestCase {
     override func setUp() {
         super.setUp()
         recordMode = false
-        agnosticOptions = [.OS, .device]
+//        agnosticOptions = [.OS, .device]
 
         route.accessToken = bogusToken
         routeController = RouteController(along: route, directions: directions)

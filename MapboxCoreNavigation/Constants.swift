@@ -7,7 +7,7 @@ import MapboxDirections
 /**
  Maximum number of meters the user can travel away from step before `RouteControllerShouldReroute` is emitted.
  */
-public var RouteControllerMaximumDistanceBeforeRecalculating: CLLocationDistance = 50
+public var RouteControllerMaximumDistanceBeforeRecalculating: CLLocationDistance = 15
 
 /**
  Threshold user must be in within to count as completing a step. One of two heuristics used to know when a user completes a step, see `RouteControllerManeuverZoneRadius`.
@@ -84,17 +84,17 @@ let FasterRouteFoundEvent = "navigation.fasterRoute"
 /**
  Accepted deviation excluding horizontal accuracy before the user is considered to be off route.
  */
-public var RouteControllerUserLocationSnappingDistance: CLLocationDistance = 15
+public var RouteControllerUserLocationSnappingDistance: CLLocationDistance = 3
 
 /**
  Maximum angle the user puck will be rotated when snapping the user's course to the route line.
  */
-public var RouteSnappingMaxManipulatedCourseAngle: CLLocationDirection = 45
+public var RouteSnappingMaxManipulatedCourseAngle: CLLocationDirection = 180
 
 /**
  Minimum Accuracy (maximum deviation, in meters) that the route snapping engine will accept before it stops snapping.
  */
-public var RouteSnappingMinimumHorizontalAccuracy: CLLocationAccuracy = 20.0
+public var RouteSnappingMinimumHorizontalAccuracy: CLLocationAccuracy = 6.0
 
 /**
  Minimum number of consecutive incorrect course updates before rerouting occurs.

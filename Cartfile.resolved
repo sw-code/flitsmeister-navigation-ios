@@ -1,6 +1,6 @@
 github "Quick/Nimble" "v9.2.1"
-github "Quick/Quick" "v2.2.1"
+github "Quick/Quick" "v4.0.0"
 github "ceeK/Solar" "2.2.0"
-github "raphaelmor/Polyline" "v4.2.1"
+github "raphaelmor/Polyline" "v5.0.3"
 github "thedavidharris/cedar" "v1.1"
 github "uber/ios-snapshot-test-case" "7.0.0"

@@ -461,8 +461,7 @@ open class NavigationViewController: UIViewController {
         let shouldPreventReroutesWhenArrivingAtWaypoint = routeController.delegate?.routeController?(routeController, shouldPreventReroutesWhenArrivingAt: routeController.routeProgress.currentLeg.destination) ?? true
         let userHasArrivedAndShouldPreventRerouting = shouldPreventReroutesWhenArrivingAtWaypoint && !routeController.routeProgress.currentLegProgress.userHasArrivedAtWaypoint
         
-        if snapsUserLocationAnnotationToRoute,
-            userHasArrivedAndShouldPreventRerouting {
+        if userHasArrivedAndShouldPreventRerouting {
             mapViewController?.mapView.updateCourseTracking(location: location, animated: true)
         }
     }
