@@ -20,7 +20,7 @@ public class CarPlayNavigationViewController: UIViewController, MGLMapViewDelega
     @objc public var drivingSide: DrivingSide = .right
     
     var routeController: RouteController
-    var mapView: NavigationMapView?
+    var mapViewWrapper: NavigationMapView?
     let shieldHeight: CGFloat = 16
     
     var carSession: CPNavigationSession!
@@ -68,26 +68,26 @@ public class CarPlayNavigationViewController: UIViewController, MGLMapViewDelega
     override public func viewDidLoad() {
         super.viewDidLoad()
         
-        let mapView = NavigationMapView(frame: view.bounds)
-        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        mapView.compassView.isHidden = true
-        mapView.logoView.isHidden = true
-        mapView.attributionButton.isHidden = true
-        mapView.delegate = self
+        let mapViewWrapper = NavigationMapView(frame: view.bounds)
+        mapViewWrapper.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        mapViewWrapper.compassView.isHidden = true
+        mapViewWrapper.logoView.isHidden = true
+        mapViewWrapper.attributionButton.isHidden = true
+        mapViewWrapper.delegate = self
 
-        mapView.defaultAltitude = 500
-        mapView.zoomedOutMotorwayAltitude = 1000
-        mapView.longManeuverDistance = 500
+        mapViewWrapper.defaultAltitude = 500
+        mapViewWrapper.zoomedOutMotorwayAltitude = 1000
+        mapViewWrapper.longManeuverDistance = 500
 
-        self.mapView = mapView
-        view.addSubview(mapView)
+        self.mapViewWrapper = mapViewWrapper
+        view.addSubview(mapViewWrapper)
         
         styleManager = StyleManager(self)
         styleManager.styles = [DayStyle(), NightStyle()]
         
         resumeNotifications()
         routeController.resume()
-        mapView.recenterMap()
+        mapViewWrapper.recenterMap()
     }
     
     override public func viewWillDisappear(_ animated: Bool) {
@@ -112,7 +112,7 @@ public class CarPlayNavigationViewController: UIViewController, MGLMapViewDelega
         
         if let previousSafeAreaInsets = previousSafeAreaInsets {
             let navigationBarIsOpen = view.safeAreaInsets > previousSafeAreaInsets
-            mapView?.compassView.isHidden = navigationBarIsOpen
+            mapViewWrapper?.compassView.isHidden = navigationBarIsOpen
         }
         
         previousSafeAreaInsets = view.safeAreaInsets
@@ -154,41 +154,41 @@ public class CarPlayNavigationViewController: UIViewController, MGLMapViewDelega
      */
     @objc public var tracksUserCourse: Bool {
         get {
-            return mapView?.tracksUserCourse ?? false
+            return mapViewWrapper?.tracksUserCourse ?? false
         }
         set {
             if !tracksUserCourse && newValue {
-                mapView?.recenterMap()
-                mapView?.addArrow(route: routeController.routeProgress.route,
+                mapViewWrapper?.recenterMap()
+                mapViewWrapper?.addArrow(route: routeController.routeProgress.route,
                                  legIndex: routeController.routeProgress.legIndex,
                                  stepIndex: routeController.routeProgress.currentLegProgress.stepIndex + 1)
             } else if tracksUserCourse && !newValue {
                 guard let userLocation = self.routeController.locationManager.location?.coordinate else {
                     return
                 }
-                mapView?.enableFrameByFrameCourseViewTracking(for: 3)
-                mapView?.setOverheadCameraView(from: userLocation, along: routeController.routeProgress.route.coordinates!, for: self.edgePadding)
+                mapViewWrapper?.enableFrameByFrameCourseViewTracking(for: 3)
+                mapViewWrapper?.setOverheadCameraView(from: userLocation, along: routeController.routeProgress.route.coordinates!, for: self.edgePadding)
             }
         }
     }
     
     public func beginPanGesture() {
-        mapView?.tracksUserCourse = false
-        mapView?.enableFrameByFrameCourseViewTracking(for: 1)
+        mapViewWrapper?.tracksUserCourse = false
+        mapViewWrapper?.enableFrameByFrameCourseViewTracking(for: 1)
     }
     
-    public func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
-        self.mapView?.addArrow(route: routeController.routeProgress.route, legIndex: routeController.routeProgress.legIndex, stepIndex: routeController.routeProgress.currentLegProgress.stepIndex + 1)
-        self.mapView?.showRoutes([routeController.routeProgress.route])
-        self.mapView?.showWaypoints(routeController.routeProgress.route)
-        self.mapView?.recenterMap()
+    public func mapView(_ mapViewWrapper: MGLMapView, didFinishLoading style: MGLStyle) {
+        self.mapViewWrapper?.addArrow(route: routeController.routeProgress.route, legIndex: routeController.routeProgress.legIndex, stepIndex: routeController.routeProgress.currentLegProgress.stepIndex + 1)
+        self.mapViewWrapper?.showRoutes([routeController.routeProgress.route])
+        self.mapViewWrapper?.showWaypoints(routeController.routeProgress.route)
+        self.mapViewWrapper?.recenterMap()
     }
     
     @objc func visualInstructionDidChange(_ notification: NSNotification) {
         let routeProgress = notification.userInfo![RouteControllerNotificationUserInfoKey.routeProgressKey] as! RouteProgress
         updateManeuvers(for: routeProgress)
-        mapView?.showWaypoints(routeProgress.route)
-        mapView?.addArrow(route: routeProgress.route, legIndex: routeProgress.legIndex, stepIndex: routeProgress.currentLegProgress.stepIndex + 1)
+        mapViewWrapper?.showWaypoints(routeProgress.route)
+        mapViewWrapper?.addArrow(route: routeProgress.route, legIndex: routeProgress.legIndex, stepIndex: routeProgress.currentLegProgress.stepIndex + 1)
     }
     
     @objc func progressDidChange(_ notification: NSNotification) {
@@ -197,7 +197,7 @@ public class CarPlayNavigationViewController: UIViewController, MGLMapViewDelega
         
         // Update the user puck
         let camera = MGLMapCamera(lookingAtCenter: location.coordinate, fromDistance: 120, pitch: 60, heading: location.course)
-        mapView?.updateCourseTracking(location: location, camera: camera, animated: true)
+        mapViewWrapper?.updateCourseTracking(location: location, camera: camera, animated: true)
         
         let congestionLevel = routeProgress.averageCongestionLevelRemainingOnLeg ?? .unknown
         guard let maneuver = carSession.upcomingManeuvers.first else { return }
@@ -215,13 +215,13 @@ public class CarPlayNavigationViewController: UIViewController, MGLMapViewDelega
     
     @objc func rerouted(_ notification: NSNotification) {
         updateRouteOnMap()
-        self.mapView?.recenterMap()
+        self.mapViewWrapper?.recenterMap()
     }
     
     func updateRouteOnMap() {
-        mapView?.addArrow(route: routeController.routeProgress.route, legIndex: routeController.routeProgress.legIndex, stepIndex: routeController.routeProgress.currentLegProgress.stepIndex + 1)
-        mapView?.showRoutes([routeController.routeProgress.route], legIndex: routeController.routeProgress.legIndex)
-        mapView?.showWaypoints(routeController.routeProgress.route, legIndex: routeController.routeProgress.legIndex)
+        mapViewWrapper?.addArrow(route: routeController.routeProgress.route, legIndex: routeController.routeProgress.legIndex, stepIndex: routeController.routeProgress.currentLegProgress.stepIndex + 1)
+        mapViewWrapper?.showRoutes([routeController.routeProgress.route], legIndex: routeController.routeProgress.legIndex)
+        mapViewWrapper?.showWaypoints(routeController.routeProgress.route, legIndex: routeController.routeProgress.legIndex)
     }
     
     func updateManeuvers(for routeProgress: RouteProgress) {
@@ -347,14 +347,14 @@ extension CarPlayNavigationViewController: StyleManagerDelegate {
     }
     
     public func styleManager(_ styleManager: StyleManager, didApply style: Style) {
-        if mapView?.styleURL != style.mapStyleURL {
-            mapView?.style?.transition = MGLTransition(duration: 0.5, delay: 0)
-            mapView?.styleURL = style.mapStyleURL
+        if mapViewWrapper?.styleURL != style.mapStyleURL {
+            mapViewWrapper?.style?.transition = MGLTransition(duration: 0.5, delay: 0)
+            mapViewWrapper?.styleURL = style.mapStyleURL
         }
     }
     
     public func styleManagerDidRefreshAppearance(_ styleManager: StyleManager) {
-        mapView?.reloadStyle(self)
+        mapViewWrapper?.reloadStyle(self)
     }
 }
 

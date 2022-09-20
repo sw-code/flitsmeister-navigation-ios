@@ -21,6 +21,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.module_name = "MapboxCoreNavigation"
 
-  s.dependency "MapboxDirections", "~> 1.1.3"
-  s.dependency "Turf", "~> 1.1.3"
+  s.dependency "MapboxDirections"
+  s.dependency "Turf"
 end

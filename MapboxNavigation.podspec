@@ -15,15 +15,16 @@ Pod::Spec.new do |s|
 
   s.source = { :git => "https://github.com/sw-code/flitsmeister-navigation-ios.git", :tag => "#{s.version.to_s}" }
   s.source_files = ["MapboxNavigation/**/*.{h,m,swift}", "MapboxCoreNavigation/{Date,Sequence,String}.swift"]
-  s.resources = ["MapboxNavigation/Resources/*/*", "MapboxNavigation/Resources/*"]
+  s.resources = ["MapboxNavigation/Resources/**/*.{lproj,strings,stringsdict,storyboard}"]
+  s.resource_bundles = {"MapboxNavigation" => ["MapboxNavigation/Resources/Assets.xcassets"]}
 
   s.requires_arc = true
   s.module_name = "MapboxNavigation"
 
-  s.dependency "MapboxCoreNavigation", "~> 1.1.3"
-  s.dependency "MapboxDirections", "~> 1.1.3"
-  s.dependency "MapboxGeocoder", "~> 1.1.3"
-  s.dependency "MapboxSpeech", "~> 1.1.3"
+  s.dependency "MapboxCoreNavigation"
+  s.dependency "MapboxDirections"
+  s.dependency "MapboxGeocoder"
+  s.dependency "MapboxSpeech"
   s.dependency "Solar", "~> 2.1"
-  s.dependency "Turf", "~> 1.1.3"
+  s.dependency "Turf"
 end
