@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "MapboxNavigationUI"
-  s.version = "1.1.4"
+  s.version = "1.1.5"
   s.summary = "Mapbox Navigation UI wrapper."
   s.description = <<-DESC
   MapboxNavigationUI makes it easy to open a navigation UI in your project.
