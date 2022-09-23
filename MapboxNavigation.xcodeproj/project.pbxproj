@@ -173,8 +173,6 @@
 		447B87CF270DBCDA00D3FD72 /* MapboxSpeech.h in Headers */ = {isa = PBXBuildFile; fileRef = 447B87CC270DBCDA00D3FD72 /* MapboxSpeech.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		447B87E4270DBD6800D3FD72 /* MapboxSpeech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447B87E1270DBD6700D3FD72 /* MapboxSpeech.swift */; };
 		447B87E6270DBD6800D3FD72 /* MBSpeechOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447B87E3270DBD6800D3FD72 /* MBSpeechOptions.swift */; };
-		447B88B4270DBEC300D3FD72 /* MapboxCoreNavigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5ADFBC91DDCC7840011824B /* MapboxCoreNavigation.framework */; platformFilter = ios; };
-		447B88B5270DBEC300D3FD72 /* MapboxCoreNavigation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C5ADFBC91DDCC7840011824B /* MapboxCoreNavigation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		447B88B8270DBEC300D3FD72 /* MapboxDirections.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 445B9D232701A0F000FAABE9 /* MapboxDirections.framework */; platformFilter = ios; };
 		447B88B9270DBEC300D3FD72 /* MapboxDirections.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 445B9D232701A0F000FAABE9 /* MapboxDirections.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		447B88BC270DBEC300D3FD72 /* MapboxGeocoder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 447B87A2270DAC3900D3FD72 /* MapboxGeocoder.framework */; platformFilter = ios; };
@@ -214,8 +212,6 @@
 		44A2ACE6270EEFE600B69877 /* Solar.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44A2ACDD270EEFC300B69877 /* Solar.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44A2ACE7270EEFF000B69877 /* Solar.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A2ACDD270EEFC300B69877 /* Solar.xcframework */; };
 		44A2ACE8270EEFF000B69877 /* Solar.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44A2ACDD270EEFC300B69877 /* Solar.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		44A2ACE9270EEFF700B69877 /* Polyline.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A2ACE0270EEFD500B69877 /* Polyline.xcframework */; };
-		44A2ACEA270EEFF700B69877 /* Polyline.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44A2ACE0270EEFD500B69877 /* Polyline.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44A2ACED270F0BA300B69877 /* Quick.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A2ACEC270F0BA300B69877 /* Quick.xcframework */; };
 		44A2ACEE270F0BA300B69877 /* Quick.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44A2ACEC270F0BA300B69877 /* Quick.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44A2ACF1270F0BE700B69877 /* Quick.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A2ACEC270F0BA300B69877 /* Quick.xcframework */; };
@@ -242,6 +238,10 @@
 		44AAA7D2271592D400CBC3B3 /* MapboxDirections.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 445B9D232701A0F000FAABE9 /* MapboxDirections.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44AAA7D5271592D400CBC3B3 /* MapboxNavigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 351BEBD71E5BCC28006FE110 /* MapboxNavigation.framework */; platformFilter = ios; };
 		44AAA7D6271592D400CBC3B3 /* MapboxNavigation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 351BEBD71E5BCC28006FE110 /* MapboxNavigation.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		44E81A9928DE32F4000C785A /* Polyline.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A2ACE0270EEFD500B69877 /* Polyline.xcframework */; };
+		44E81A9A28DE32F4000C785A /* Polyline.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44A2ACE0270EEFD500B69877 /* Polyline.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		44E81A9C28DE35C2000C785A /* MapboxCoreNavigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5ADFBC91DDCC7840011824B /* MapboxCoreNavigation.framework */; };
+		44E81A9D28DE35C2000C785A /* MapboxCoreNavigation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C5ADFBC91DDCC7840011824B /* MapboxCoreNavigation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44F073FB27297E56009FB690 /* NavigationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F073FA27297E55009FB690 /* NavigationStyle.swift */; };
 		64847A041F04629D003F3A69 /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64847A031F04629D003F3A69 /* Feedback.swift */; };
 		8D07C5A820B612310093D779 /* EmptyStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 8D07C5A720B612310093D779 /* EmptyStyle.json */; };
@@ -370,13 +370,6 @@
 			remoteGlobalIDString = 445B9D222701A0F000FAABE9;
 			remoteInfo = MapboxDirections;
 		};
-		447B88B6270DBEC300D3FD72 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C5ADFBC01DDCC7840011824B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C5ADFBC81DDCC7840011824B;
-			remoteInfo = MapboxCoreNavigation;
-		};
 		447B88BA270DBEC300D3FD72 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C5ADFBC01DDCC7840011824B /* Project object */;
@@ -503,6 +496,13 @@
 			remoteGlobalIDString = 358D14621E5E3B7700ADE590;
 			remoteInfo = "Example-Swift";
 		};
+		44E81A9E28DE35C2000C785A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C5ADFBC01DDCC7840011824B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C5ADFBC81DDCC7840011824B;
+			remoteInfo = MapboxCoreNavigation;
+		};
 		8DBCA7772080174600981EB2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C5ADFBC01DDCC7840011824B /* Project object */;
@@ -548,11 +548,11 @@
 				447B8913270DCB6C00D3FD72 /* Turf.framework in Embed Frameworks */,
 				447B88B9270DBEC300D3FD72 /* MapboxDirections.framework in Embed Frameworks */,
 				447B88BD270DBEC300D3FD72 /* MapboxGeocoder.framework in Embed Frameworks */,
-				447B88B5270DBEC300D3FD72 /* MapboxCoreNavigation.framework in Embed Frameworks */,
 				447B88C5270DBEC300D3FD72 /* MapboxNavigation.framework in Embed Frameworks */,
 				447B88C9270DBEC300D3FD72 /* MapboxSpeech.framework in Embed Frameworks */,
 				44AAA7BF271586F200CBC3B3 /* MapboxNavigationUI.framework in Embed Frameworks */,
 				445B1AE728D9BA1500C833BE /* Polyline.xcframework in Embed Frameworks */,
+				44E81A9D28DE35C2000C785A /* MapboxCoreNavigation.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -584,17 +584,6 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		44A2ACEB270EEFF700B69877 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				44A2ACEA270EEFF700B69877 /* Polyline.xcframework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		44AAA7D9271592D400CBC3B3 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -604,6 +593,17 @@
 				44AAA7D6271592D400CBC3B3 /* MapboxNavigation.framework in Embed Frameworks */,
 				44AAA7CE271592D400CBC3B3 /* MapboxCoreNavigation.framework in Embed Frameworks */,
 				44AAA7D2271592D400CBC3B3 /* MapboxDirections.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44E81A9B28DE32F4000C785A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				44E81A9A28DE32F4000C785A /* Polyline.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1017,10 +1017,10 @@
 				447B88B8270DBEC300D3FD72 /* MapboxDirections.framework in Frameworks */,
 				445B1AE628D9BA1500C833BE /* Polyline.xcframework in Frameworks */,
 				447B8912270DCB6C00D3FD72 /* Turf.framework in Frameworks */,
+				44E81A9C28DE35C2000C785A /* MapboxCoreNavigation.framework in Frameworks */,
 				447B88C8270DBEC300D3FD72 /* MapboxSpeech.framework in Frameworks */,
 				4476340227E89D2300965C6D /* Mapbox in Frameworks */,
 				447B88BC270DBEC300D3FD72 /* MapboxGeocoder.framework in Frameworks */,
-				447B88B4270DBEC300D3FD72 /* MapboxCoreNavigation.framework in Frameworks */,
 				44AAA7BE271586F200CBC3B3 /* MapboxNavigationUI.framework in Frameworks */,
 				445B1AE828D9BA1900C833BE /* Solar.xcframework in Frameworks */,
 			);
@@ -1055,7 +1055,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44A2ACE9270EEFF700B69877 /* Polyline.xcframework in Frameworks */,
+				44E81A9928DE32F4000C785A /* Polyline.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1779,13 +1779,13 @@
 			buildRules = (
 			);
 			dependencies = (
-				447B88B7270DBEC300D3FD72 /* PBXTargetDependency */,
 				447B88BB270DBEC300D3FD72 /* PBXTargetDependency */,
 				447B88BF270DBEC300D3FD72 /* PBXTargetDependency */,
 				447B88C7270DBEC300D3FD72 /* PBXTargetDependency */,
 				447B88CB270DBEC300D3FD72 /* PBXTargetDependency */,
 				447B8915270DCB6C00D3FD72 /* PBXTargetDependency */,
 				44AAA7BD271586F200CBC3B3 /* PBXTargetDependency */,
+				44E81A9F28DE35C2000C785A /* PBXTargetDependency */,
 			);
 			name = "Example-Swift";
 			packageProductDependencies = (
@@ -1824,7 +1824,7 @@
 				445B9D1F2701A0F000FAABE9 /* Sources */,
 				445B9D202701A0F000FAABE9 /* Frameworks */,
 				445B9D212701A0F000FAABE9 /* Resources */,
-				44A2ACEB270EEFF700B69877 /* Embed Frameworks */,
+				44E81A9B28DE32F4000C785A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2578,12 +2578,6 @@
 			target = 445B9D222701A0F000FAABE9 /* MapboxDirections */;
 			targetProxy = 444C4FA72701A27C00D4C0AB /* PBXContainerItemProxy */;
 		};
-		447B88B7270DBEC300D3FD72 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			platformFilter = ios;
-			target = C5ADFBC81DDCC7840011824B /* MapboxCoreNavigation */;
-			targetProxy = 447B88B6270DBEC300D3FD72 /* PBXContainerItemProxy */;
-		};
 		447B88BB270DBEC300D3FD72 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			platformFilter = ios;
@@ -2689,6 +2683,11 @@
 			isa = PBXTargetDependency;
 			target = 358D14621E5E3B7700ADE590 /* Example-Swift */;
 			targetProxy = 44B06D90270F26BD009CAC96 /* PBXContainerItemProxy */;
+		};
+		44E81A9F28DE35C2000C785A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C5ADFBC81DDCC7840011824B /* MapboxCoreNavigation */;
+			targetProxy = 44E81A9E28DE35C2000C785A /* PBXContainerItemProxy */;
 		};
 		8DBCA7782080174600981EB2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2857,7 +2856,7 @@
 				);
 				INFOPLIST_FILE = MapboxNavigation/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2890,7 +2889,7 @@
 				);
 				INFOPLIST_FILE = MapboxNavigation/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2932,7 +2931,7 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = RouteTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2966,7 +2965,7 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = RouteTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3114,7 +3113,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Mapbox. All rights reserved.";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3158,7 +3157,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Mapbox. All rights reserved.";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3197,7 +3196,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Mapbox. All rights reserved.";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3237,7 +3236,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Mapbox. All rights reserved.";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3276,7 +3275,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Mapbox. All rights reserved.";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3316,7 +3315,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Mapbox. All rights reserved.";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3355,7 +3354,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Mapbox. All rights reserved.";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3395,7 +3394,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Mapbox. All rights reserved.";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3435,7 +3434,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Mapbox. All rights reserved.";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3475,7 +3474,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Mapbox. All rights reserved.";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3635,7 +3634,7 @@
 				);
 				INFOPLIST_FILE = MapboxCoreNavigation/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3670,7 +3669,7 @@
 				);
 				INFOPLIST_FILE = MapboxCoreNavigation/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

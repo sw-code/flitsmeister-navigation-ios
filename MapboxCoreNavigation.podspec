@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.author = { "SWCode" => "info@swcode.io" }
 
   s.swift_version = "5"
-  s.platform = :ios
+  s.platform = :ios, "12.1"
   s.ios.deployment_target = "12.1"
 
   s.source = { :git => "https://github.com/sw-code/flitsmeister-navigation-ios.git", :tag => "#{s.version.to_s}" }

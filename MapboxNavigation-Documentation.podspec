@@ -10,6 +10,7 @@ Pod::Spec.new do |s|
   s.author = { "SWCode" => "info@swcode.io" }
 
   s.swift_version = "5"
+  s.platform = :ios, "12.1"
   s.ios.deployment_target = "12.1"
   s.ios.vendored_frameworks = ["Vendor/Mapbox.xcframework"]
 
