@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "Turf"
-  s.version = "1.1.7"
+  s.version = "1.1.8"
   s.summary = "Simple spatial analysis."
   s.description = "A spatial analysis library written in Swift for native iOS, macOS, tvOS, watchOS, and Linux applications, ported from Turf.js."
   s.homepage = "https://swcode.io"
