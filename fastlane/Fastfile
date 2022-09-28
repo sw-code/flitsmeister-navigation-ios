@@ -20,15 +20,15 @@ platform :ios do
     if !bump_type
       bump_type = "patch"
     end
-    
+
     pod_sources = ["https://#{ ENV['GIT_PERSONAL_ACCESS_TOKEN'] }github.com/sw-code/spotar-ios-pods", "https://cdn.cocoapods.org/"]
-    pod_lib_lint(podspec: "Turf.podspec", sources: pod_sources, allow_warnings: true)
-    pod_lib_lint(podspec: "MapboxSpeech.podspec", sources: pod_sources, allow_warnings: true)
-    pod_lib_lint(podspec: "MapboxGeocoder.podspec", sources: pod_sources, allow_warnings: true)
-    pod_lib_lint(podspec: "MapboxDirections.podspec", sources: pod_sources, allow_warnings: true)
-    pod_lib_lint(podspec: "MapboxCoreNavigation.podspec", sources: pod_sources, include_podspecs: "{Turf.podspec,MapboxDirections.podspec}", allow_warnings: true)
-    pod_lib_lint(podspec: "MapboxNavigation.podspec", sources: pod_sources, include_podspecs: "{MapboxCoreNavigation.podspec,MapboxDirections.podspec,MapboxGeocoder.podspec,MapboxSpeech.podspec,Turf.podspec}", allow_warnings: true)
-    pod_lib_lint(podspec: "MapboxNavigationUI.podspec", sources: pod_sources, include_podspecs: "{MapboxCoreNavigation.podspec,MapboxNavigation.podspec,MapboxDirections.podspec,MapboxGeocoder.podspec,MapboxSpeech.podspec,Turf.podspec}", allow_warnings: true)
+    # pod_lib_lint(podspec: "Turf.podspec", sources: pod_sources, allow_warnings: true)
+    # pod_lib_lint(podspec: "MapboxSpeech.podspec", sources: pod_sources, allow_warnings: true)
+    # pod_lib_lint(podspec: "MapboxGeocoder.podspec", sources: pod_sources, allow_warnings: true)
+    # pod_lib_lint(podspec: "MapboxDirections.podspec", sources: pod_sources, allow_warnings: true)
+    # pod_lib_lint(podspec: "MapboxCoreNavigation.podspec", sources: pod_sources, include_podspecs: "{Turf.podspec,MapboxDirections.podspec}", allow_warnings: true)
+    # pod_lib_lint(podspec: "MapboxNavigation.podspec", sources: pod_sources, include_podspecs: "{MapboxCoreNavigation.podspec,MapboxDirections.podspec,MapboxGeocoder.podspec,MapboxSpeech.podspec,Turf.podspec}", allow_warnings: true)
+    # pod_lib_lint(podspec: "MapboxNavigationUI.podspec", sources: pod_sources, include_podspecs: "{MapboxCoreNavigation.podspec,MapboxNavigation.podspec,MapboxDirections.podspec,MapboxGeocoder.podspec,MapboxSpeech.podspec,Turf.podspec}", allow_warnings: true)
 
     bump_pod(pod: "Turf.podspec", bump: bump_type, project: "./MapboxNavigation.xcodeproj", target: "Turf")
     bump_pod(pod: "MapboxSpeech.podspec", bump: bump_type, project: "./MapboxNavigation.xcodeproj", target: "MapboxSpeech")
@@ -42,6 +42,20 @@ platform :ios do
       xcodeproj: "./MapboxNavigation.xcodeproj",
       target: "MapboxNavigationUI"
     )
+    
+    change_podspec_dependency_version(podspec: "MapboxCoreNavigation.podspec", dependency: "Turf", version: version)
+    change_podspec_dependency_version(podspec: "MapboxCoreNavigation.podspec", dependency: "MapboxDirections", version: version)
+
+    change_podspec_dependency_version(podspec: "MapboxNavigation.podspec", dependency: "MapboxCoreNavigation", version: version)
+    change_podspec_dependency_version(podspec: "MapboxNavigation.podspec", dependency: "MapboxDirections", version: version)
+    change_podspec_dependency_version(podspec: "MapboxNavigation.podspec", dependency: "MapboxGeocoder", version: version)
+    change_podspec_dependency_version(podspec: "MapboxNavigation.podspec", dependency: "MapboxSpeech", version: version)
+    change_podspec_dependency_version(podspec: "MapboxNavigation.podspec", dependency: "Turf", version: version)
+
+    change_podspec_dependency_version(podspec: "MapboxNavigationUI.podspec", dependency: "MapboxCoreNavigation", version: version)
+    change_podspec_dependency_version(podspec: "MapboxNavigationUI.podspec", dependency: "MapboxNavigation", version: version)
+    change_podspec_dependency_version(podspec: "MapboxNavigationUI.podspec", dependency: "MapboxDirections", version: version)
+
     git_add
     git_commit(path: ".", message: "[skip ci] Version Bump to #{version}")
     add_git_tag(tag: version)

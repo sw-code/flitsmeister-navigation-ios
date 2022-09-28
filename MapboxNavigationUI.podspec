@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "MapboxNavigationUI"
-  s.version = "1.1.8"
+  s.version = "1.1.9"
   s.summary = "Mapbox Navigation UI wrapper."
   s.description = <<-DESC
   MapboxNavigationUI makes it easy to open a navigation UI in your project.
@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.module_name = "MapboxNavigationUI"
 
-  s.dependency "MapboxCoreNavigation"
-  s.dependency "MapboxNavigation"
-  s.dependency "MapboxDirections"
+  s.dependency "MapboxCoreNavigation", "1.1.9"
+  s.dependency "MapboxNavigation", "1.1.9"
+  s.dependency "MapboxDirections", "1.1.9"
 end

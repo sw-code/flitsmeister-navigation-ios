@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "MapboxCoreNavigation"
-  s.version = "1.1.8"
+  s.version = "1.1.9"
   s.summary = "Core components for turn-by-turn navigation on iOS."
   s.description  = <<-DESC
   Mapbox Core Navigation provides the core spatial and timing logic for turn-by-turn navigation along a route. For a complete turn-by-turn navigation interface, use the Mapbox Navigation SDK for iOS (MapboxNavigation).
@@ -21,6 +21,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.module_name = "MapboxCoreNavigation"
 
-  s.dependency "MapboxDirections"
-  s.dependency "Turf"
+  s.dependency "MapboxDirections", "1.1.9"
+  s.dependency "Turf", "1.1.9"
 end
