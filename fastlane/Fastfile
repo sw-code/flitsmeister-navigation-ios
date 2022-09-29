@@ -22,13 +22,13 @@ platform :ios do
     end
 
     pod_sources = ["https://#{ ENV['GIT_PERSONAL_ACCESS_TOKEN'] }github.com/sw-code/spotar-ios-pods", "https://cdn.cocoapods.org/"]
-    # pod_lib_lint(podspec: "Turf.podspec", sources: pod_sources, allow_warnings: true)
-    # pod_lib_lint(podspec: "MapboxSpeech.podspec", sources: pod_sources, allow_warnings: true)
-    # pod_lib_lint(podspec: "MapboxGeocoder.podspec", sources: pod_sources, allow_warnings: true)
-    # pod_lib_lint(podspec: "MapboxDirections.podspec", sources: pod_sources, allow_warnings: true)
-    # pod_lib_lint(podspec: "MapboxCoreNavigation.podspec", sources: pod_sources, include_podspecs: "{Turf.podspec,MapboxDirections.podspec}", allow_warnings: true)
-    # pod_lib_lint(podspec: "MapboxNavigation.podspec", sources: pod_sources, include_podspecs: "{MapboxCoreNavigation.podspec,MapboxDirections.podspec,MapboxGeocoder.podspec,MapboxSpeech.podspec,Turf.podspec}", allow_warnings: true)
-    # pod_lib_lint(podspec: "MapboxNavigationUI.podspec", sources: pod_sources, include_podspecs: "{MapboxCoreNavigation.podspec,MapboxNavigation.podspec,MapboxDirections.podspec,MapboxGeocoder.podspec,MapboxSpeech.podspec,Turf.podspec}", allow_warnings: true)
+    pod_lib_lint(podspec: "Turf.podspec", sources: pod_sources, allow_warnings: true)
+    pod_lib_lint(podspec: "MapboxSpeech.podspec", sources: pod_sources, allow_warnings: true)
+    pod_lib_lint(podspec: "MapboxGeocoder.podspec", sources: pod_sources, allow_warnings: true)
+    pod_lib_lint(podspec: "MapboxDirections.podspec", sources: pod_sources, allow_warnings: true)
+    pod_lib_lint(podspec: "MapboxCoreNavigation.podspec", sources: pod_sources, include_podspecs: "{Turf.podspec,MapboxDirections.podspec}", allow_warnings: true)
+    pod_lib_lint(podspec: "MapboxNavigation.podspec", sources: pod_sources, include_podspecs: "{MapboxCoreNavigation.podspec,MapboxDirections.podspec,MapboxGeocoder.podspec,MapboxSpeech.podspec,Turf.podspec}", allow_warnings: true)
+    pod_lib_lint(podspec: "MapboxNavigationUI.podspec", sources: pod_sources, include_podspecs: "{MapboxCoreNavigation.podspec,MapboxNavigation.podspec,MapboxDirections.podspec,MapboxGeocoder.podspec,MapboxSpeech.podspec,Turf.podspec}", allow_warnings: true)
 
     bump_pod(pod: "Turf.podspec", bump: bump_type, project: "./MapboxNavigation.xcodeproj", target: "Turf")
     bump_pod(pod: "MapboxSpeech.podspec", bump: bump_type, project: "./MapboxNavigation.xcodeproj", target: "MapboxSpeech")
